@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HydraController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,4 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/hydra', [App\Http\Controllers\HydraController::class, 'index'])->name('hydra');
+
+Route::get('/hydra', [HydraController::class, 'index'])->name('hydra');
+
+Route::get('/login', [AuthController::class, 'getLogin']);
+Route::post('/login', [AuthController::class, 'postLogin']);
+Route::get('/logout', [AuthController::class, 'logout']);
