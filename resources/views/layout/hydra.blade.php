@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="./assets/compiled/css/table-datatable.css">
   <link rel="stylesheet" href="./assets/compiled/css/app.css">
   @livewireStyles
-
+  
 
   <link rel="stylesheet" href="./assets/compiled/css/app-dark.css">
 </head>
@@ -150,9 +150,8 @@
                     <i class="bi bi-justify fs-3"></i>
                 </a>
             </header>
-            @yield('body')
 
-
+            @yield('content')
             <footer>
                 <div class="footer clearfix mb-0 text-muted">
                     <div class="float-start">
@@ -171,12 +170,15 @@
     
     
     <script src="assets/compiled/js/app.js"></script>
-    
 
-    
+
 <script src="assets/extensions/simple-datatables/umd/simple-datatables.js"></script>
 <script src="assets/static/js/pages/simple-datatables.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 @livewireScripts
+
+
 </body>
 
 </html>
