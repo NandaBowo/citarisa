@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('hydra', function (Blueprint $table) {
             $table->id();
+            $table->string('nama');
             $table->string('lokasi');
             $table->string('posisi');
             $table->string('kondisihouse');

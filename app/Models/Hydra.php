@@ -11,6 +11,7 @@ class Hydra extends Model
     protected $table = 'hydra';
  
     protected $fillable = [
+        'nama',
         'lokasi',
         'posisi',
         'kondisihouse',

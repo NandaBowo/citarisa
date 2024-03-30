@@ -14,6 +14,10 @@
                     </ol>
                 </nav>
             </div>
+            <br>
+            @if (session()->has('message'))
+                <h5 class="alert alert-success">{{ session('message') }}</h5>
+            @endif
         </div>
     </div>
     <section class="section">
@@ -24,7 +28,7 @@
                 </h5>
             </div>
             <div class="card-body">
-                <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="">Tambah Data</button> 
+                <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#hydraModal">Tambah Data</button> 
                 <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="">Export Data</button> 
                 <table class="table table-striped" id="table1">
                     <thead>
@@ -41,26 +45,36 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Graiden</td>
-                            <td>apartemen</td>
-                            <td>setuju</td>
-                            <td>tidak setuju</td>
-                            <td>a</td>
-                            <td>ad</td>
-                            <td>ada</td>
-                            <td>gakta</td>
-                            <td>
-                                <button type="button" data-bs-toggle="modal" data-bs-target="" wire:click="" class="btn btn-warning btn-sm ">Ubah</button>
-                                <button type="button" data-bs-toggle="modal" data-bs-target="" wire:click="" class="btn btn-danger btn-sm">Hapus</button>
-                            </td>
-                            
-                        </tr>
-
+                        @forelse ($hydra as $hydras)
+                            <tr>
+                                <td>{{ $hydras->nama }}</td>
+                                <td>{{ $hydras->lokasi }}</td>
+                                <td>{{ $hydras->posisi }}</td>
+                                <td>{{ $hydras->kondisihouse }}</td>
+                                <td>{{ $hydras->jumlah }}</td>
+                                <td>{{ $hydras->peralatan }}</td>
+                                <td>{{ $hydras->kondisikabinet }}</td>
+                                <td>{{ $hydras->flow }}</td>
+                                <td>
+                                    <button type="button" data-bs-toggle="modal" data-bs-target="updateHydraModal" wire:click="editHydra({{$hydras->id}})" class="btn btn-warning btn-sm ">Ubah</button>
+                                    <button type="button" data-bs-toggle="modal" data-bs-target="deleteHydraModal" wire:click="deleteHydra({{$hydras->id}})" class="btn btn-danger btn-sm">Hapus</button>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="8">No Record Found</td>
+                            </tr>
+                        @endforelse
                     </tbody>
                 </table>
+                <div>
+                    {{ $hydra->links() }}
+                </div>
             </div>
         </div>
-
     </section>
 </div>
+</div>
+    
+
+

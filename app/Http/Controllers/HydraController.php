@@ -9,7 +9,7 @@ class HydraController extends Controller
     //
     public function index()
     {
-        return view('hydra');
+        return view('hydra.index');
     }
 }
 
