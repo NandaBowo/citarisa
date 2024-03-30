@@ -89,12 +89,12 @@
                 <ul class="submenu ">
                     
                     <li class="submenu-item  ">
-                        <a href="component-accordion.html" class="submenu-link">Limba Masuk</a>
+                        <a href="/limbah_masuk" class="submenu-link">Limbah Masuk</a>
                         
                     </li>
                     
                     <li class="submenu-item  ">
-                        <a href="component-alert.html" class="submenu-link">Limba Keluar</a>
+                        <a href="/limbah_keluar" class="submenu-link">Limbah Keluar</a>
                         
                     </li>
                     
@@ -105,7 +105,7 @@
 
             <li
                 class="sidebar-item active ">
-                <a href="form-layout.html" class='sidebar-link'>
+                <a href="/hydra" class='sidebar-link'>
                     <i class="bi bi-file-earmark-medical-fill"></i>
                     <span>Hydra</span>
                 </a>
