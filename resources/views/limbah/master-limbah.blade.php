@@ -81,7 +81,7 @@
                     <h1 class="modal-title fs-5" id="updateModalLabel">Form Update Sumber Baru</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="/master_limbah/edit/{{ $ms->id }}" method="post">
+                <form action="/master_limbah/edit/" method="post">
                     @csrf
                     <div class="modal-body">
                         <div class="mb-3">
