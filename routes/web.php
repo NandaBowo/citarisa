@@ -28,8 +28,12 @@ Route::post('/login', [AuthController::class, 'postLogin']);
 Route::get('/logout', [AuthController::class, 'logout']);
 Route::get('/hydra', [HydraController::class, 'index'])->name('hydra');
 
+Route::get('/master_limbah', [LimbahController::class, 'masterLimbah']);
+Route::post('/master_limbah', [LimbahController::class, 'masterLimbahAdd']);
 Route::get('/limbah_masuk', [LimbahController::class, 'limbahMasuk'])->name('limbah_masuk');
 Route::post('/limbah_masuk', [LimbahController::class, 'limbahMasukAdd']);
 Route::get('/limbah_keluar', [LimbahController::class, 'limbahKeluar'])->name('limbah_keluar');
+Route::post('/limbah_keluar', [LimbahController::class, 'limbahKeluarAdd']);
+Route::get('/jumlah_limbah', [LimbahController::class, 'jumlahLimbah'])->name('jumlah_limbah');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');

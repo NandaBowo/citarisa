@@ -75,27 +75,31 @@
                     <i class="bi bi-grid-fill"></i>
                     <span>Data Survey</span>
                 </a>
-                
-
             </li>
             
             <li
                 class="sidebar-item  has-sub">
                 <a href="#" class='sidebar-link'>
                     <i class="bi bi-stack"></i>
-                    <span>Jumlah Limbah</span>
+                    <span>Limbah</span>
                 </a>
                 
                 <ul class="submenu ">
                     
                     <li class="submenu-item  ">
+                        <a href="/master_limbah" class="submenu-link">Master Limbah</a>
+                    </li>
+
+                    <li class="submenu-item  ">
                         <a href="/limbah_masuk" class="submenu-link">Limbah Masuk</a>
-                        
                     </li>
                     
                     <li class="submenu-item  ">
                         <a href="/limbah_keluar" class="submenu-link">Limbah Keluar</a>
-                        
+                    </li>
+
+                    <li class="submenu-item  ">
+                        <a href="/jumlah_limbah" class="submenu-link">Jumlah Limbah</a>
                     </li>
                     
                 </ul>

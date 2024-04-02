@@ -28,7 +28,7 @@
                     <th scope="col">Tanggal Masuk Limbah B3</th>
                     <th scope="col">Sumber Limbah B3</th>
                     <th scope="col">Jumlah Limbah B3 Masuk (KG)</th>
-                    <th scope="col">Maksimal Penyimpanan s/d tanggal</th>
+                    <th scope="col">Tanggal Expired Limbah</th>
                     <th scope="col">Aksi</th>
                   </tr>
                 </thead>
@@ -37,10 +37,10 @@
                         <tr>
                             <th scope="row">{{ $loop->iteration }}</th>
                             <td>{{ $lb->jenis_limbah }}</td>
-                            <td>{{ date('d M Y', strtotime($lb->tanggal_masuk_limbah)) }}</td>
+                            <td>{{ date("d M Y", strtotime($lb->tanggal_masuk_limbah)) }}</td>
                             <td>{{ $lb->sumber_limbah }}</td>
                             <td>{{ $lb->jumlah_limbah }}</td>
-                            <td>{{ date('d M Y', strtotime($lb->maksimal_penyimpanan_limbah)) }}</td>
+                            <td>{{ date("d M Y", strtotime($lb->tanggal_exp_limbah)) }}</td>
                             <td>
                                 <div class="btn-group">
                                     <a href="/limbah_keluar" class="btn btn-sm btn-warning me-2">Ubah</a>
@@ -69,30 +69,6 @@
                             <label for="jenis_limbah" class="form-label">Jenis Limbah B3 Masuk</label>
                             <select class="form-select" id="jenis_limbah" name="jenis_limbah" required>
                                 <option disabled selected value>Pilih Jenis Limbah</option>
-                                <option value="Residu sampel (filter) Januari">Residu sampel (filter) Januari</option>
-                                <option value="Residu sampel (filter) Februari">Residu sampel (filter) Februari</option>
-                                <option value="Residu sampel (filter) Maret">Residu sampel (filter) Maret</option>
-                                <option value="Residu sampel (filter) April">Residu sampel (filter) April</option>
-                                <option value="Residu sampel (filter) Mei">Residu sampel (filter) Mei</option>
-                                <option value="Residu sampel (filter) Juni">Residu sampel (filter) Juni</option>
-                                <option value="Residu sampel (filter) Juli">Residu sampel (filter) Juli</option>
-                                <option value="Residu sampel (filter) Agustus">Residu sampel (filter) Agustus</option>
-                                <option value="Residu sampel (filter) September">Residu sampel (filter) September</option>
-                                <option value="Residu sampel (filter) Oktober">Residu sampel (filter) Oktober</option>
-                                <option value="Residu sampel (filter) November">Residu sampel (filter) November</option>
-                                <option value="Residu sampel (filter) Desember">Residu sampel (filter) Desember</option>
-                                <option value="Botol Bekas Bahan Kimia">Botol Bekas Bahan Kimia</option>
-                                <option value="Bahan Kimia Kadaluarsa">Bahan Kimia Kadaluarsa</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="tanggal_masuk_limbah" class="form-label">Tanggal Masuk Limbah B3</label>
-                            <input type="date" class="form-control" id="tanggal_masuk_limbah" name="tanggal_masuk_limbah" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="sumber_limbah" class="form-label">Jenis Limbah B3 Masuk</label>
-                            <select class="form-select" id="sumber_limbah" name="sumber_limbah" required>
-                                <option disabled selected value>Pilih Sumber Limbah</option>
                                 <option value="Laboratorium">Laboratorium</option>
                                 <option value="Limbah Terkontaminasi">Limbah Terkontaminasi</option>
                                 <option value="Limbah Sludge Analisis">Limbah Sludge Analisis</option>
@@ -103,12 +79,25 @@
                             </select>
                         </div>
                         <div class="mb-3">
+                            <label for="tanggal_masuk_limbah" class="form-label">Tanggal Masuk Limbah B3</label>
+                            <input type="date" class="form-control" id="tanggal_masuk_limbah" name="tanggal_masuk_limbah" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="sumber_limbah_id" class="form-label">Sumber Limbah B3 Masuk</label>
+                            <select class="form-select" id="sumber_limbah" name="sumber_limbah_id" required>
+                                <option disabled selected value>Pilih Sumber Limbah</option>
+                                @foreach ($master_limbah as $ms)
+                                    <option value="{{ $ms->id }}">{{ $ms->sumber_limbah }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="mb-3">
                             <label for="jumlah_limbah" class="form-label">Jumlah Limbah B3 Masuk (KG)</label>
                             <input type="number" step="0.01" class="form-control" id="jumlah_limbah" name="jumlah_limbah" required>
                         </div>
                         <div class="mb-3">
-                            <label for="maksimal_penyimpanan" class="form-label">Maksimal Penyimpanan s/d Tanggal</label>
-                            <input type="date" class="form-control" id="maksimal_penyimpanan" name="maksimal_penyimpanan">
+                            <label for="durasi_exp_limbah" class="form-label">Durasi Expired Limbah (Hari)</label>
+                            <input type="number" class="form-control" id="durasi_exp_limbah" name="durasi_exp_limbah">
                         </div>
                     </div>
                     <div class="modal-footer">
