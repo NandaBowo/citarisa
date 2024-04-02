@@ -5,20 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Hydra extends Model
+class Detector extends Model
 {
     use HasFactory;
-    protected $table = 'hydra';
+    protected $table = 'detector';
  
     protected $fillable = [
         'nama',
         'lokasi',
-        'posisi',
-        'kondisihouse',
-        'valve',
-        'jumlah',
-        'peralatan',
-        'kondisikabinet',
-        'flow',
+        'signal',
+        'kondisi',
+        'alarm',
+        'fisik',
+        'pengetesan',
+        
     ];
 }
