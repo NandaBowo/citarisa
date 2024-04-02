@@ -1,10 +1,10 @@
 <div class="page-heading">
 
-    @include('livewire.hydramodal')
+    @include('livewire.aparmodal')
     <div class="page-title">
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>Data Hydrant</h3>
+                <h3>Data Apar</h3>
                 <!-- <p class="text-subtitle text-muted">A sortable, searchable, paginated table without dependencies thanks to simple-datatables.</p> -->
             </div>
             <!-- <div class="col-12 col-md-6 order-md-2 order-first">
@@ -25,42 +25,46 @@
         <div class="card">
             <div class="card-header">
                 <h5 class="card-title">
-                    Data Hydrant
+                    Data Apar
                 </h5>
             </div>
             <div class="card-body">
-                <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#hydraModal">Tambah Data</button> 
+                <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#aparModal">Tambah Data</button> 
                 <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="">Export Data</button> 
                 <table class="table table-striped" id="table1">
                     <thead>
                         <tr>
-                            <th>Nama</th>
-                            <th>Lokasi Hydra</th>
-                            <th>posisi kabinet </th>
-                            <th>kondisi hose</th>
-                            <th>valve</th>
-                            <th>jumlah peralatan</th>
-                            <th>peralatan korosi kotoran</th>
-                            <th>kondisi  kabinet</th>
-                            <th>flow test </th>
+                            <th>Merek</th>
+                            <th>Jenis</th>
+                            <th>Lokasi</th>
+                            <th>Nomor Apar</th>
+                            <th>Pengecekan</th>
+                            <th>Berat</th>
+                            <th>Segel</th>
+                            <th>Selang</th>
+                            <th>Indikator</th>
+                            <th>Fisik</th>
+                            <th>Keterangan</th>
                             <th>aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($hydra as $hydras)
+                        @forelse ($apar as $apars)
                             <tr>
-                                <td>{{ $hydras->nama }}</td>
-                                <td>{{ $hydras->lokasi }}</td>
-                                <td>{{ $hydras->posisi }}</td>
-                                <td>{{ $hydras->kondisihouse }}</td>
-                                <td>{{ $hydras->valve }}</td>
-                                <td>{{ $hydras->jumlah }}</td>
-                                <td>{{ $hydras->peralatan }}</td>
-                                <td>{{ $hydras->kondisikabinet }}</td>
-                                <td>{{ $hydras->flow }}</td>
+                                <td>{{ $apars->merek }}</td>
+                                <td>{{ $apars->jenis }}</td>
+                                <td>{{ $apars->lokasi }}</td>
+                                <td>{{ $apars->id }}</td>
+                                <td>{{ $apars->tanggalpengecekan }}</td>
+                                <td>{{ $apars->berat }}</td>
+                                <td>{{ $apars->segel }}</td>
+                                <td>{{ $apars->selang }}</td>
+                                <td>{{ $apars->indikator }}</td>
+                                <td>{{ $apars->fisik }}</td>
+                                <td>{{ $apars->keterangan }}</td>
                                 <td>
-                                    <button type="button" data-bs-toggle="modal" data-bs-target="#updateHydraModal" wire:click="editHydra({{$hydras->id}})" class="btn btn-warning btn-sm ">Ubah</button>
-                                    <button type="button" data-bs-toggle="modal" data-bs-target="#deleteHydraModal" wire:click="deleteHydra({{$hydras->id}})" class="btn btn-danger btn-sm">Hapus</button>
+                                    <button type="button" data-bs-toggle="modal" data-bs-target="#updateAparModal" wire:click="editApar({{$apars->id}})" class="btn btn-warning btn-sm ">Ubah</button>
+                                    <button type="button" data-bs-toggle="modal" data-bs-target="#deleteAparModal" wire:click="deleteApar({{$apars->id}})" class="btn btn-danger btn-sm">Hapus</button>
                                 </td>
                             </tr>
                         @empty
@@ -71,19 +75,12 @@
                     </tbody>
                 </table>
                 <div>
-                    {{ $hydra->links() }}
+                    {{ $apar->links() }}
                 </div>
             </div>
         </div>
     </section>
-    <script>
-    window.addEventListener('close-modal', event => {
-        $('#hydraModal').modal('hide');
-        $('#updateHydraModal').modal('hide');
-        $('#deleteHydraModal').modal('hide');
-        $('.modal-backdrop').remove();
-    });
-</script>
+   
 </div>
 
 

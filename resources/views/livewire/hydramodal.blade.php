@@ -16,38 +16,99 @@
                         @error('nama') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="mb-3">
-                        <label>Student Email</label>
-                        <input type="text" wire:model="lokasi" class="form-control">
+                        <label>Lokasi Hydrant</label>
+                        <select wire:model="lokasi" class="form-control">
+                        <option value=" "> </option>
+                            <option value="Parkiran Mobil Lt.1">Parkiran Mobil Lt.1</option>
+                            <option value="Ruang Pertemuan Lt. 2">Ruang Pertemuan Lt. 2</option>
+                            <option value="Depan Ruang Staff Pelatihan dan TU">Depan Ruang Staff Pelatihan dan TU</option>
+                            <option value="Depan Toilet Wanita Lt.3">Depan Toilet Wanita Lt.3</option>
+                            <option value="Samping Lift Barang Lt.3">Samping Lift Barang Lt.3</option>
+                        </select>
                         @error('lokasi') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="mb-3">
-                        <label>Student Course</label>
-                        <input type="text" wire:model="posisi" class="form-control">
+                        <label>Pastikan posisi kabinet tidak terhalang oleh penempatan material</label>
+                        <div>
+                            <label>
+                                <input type="radio" wire:model="posisi" value="Sesuai"> Sesuai
+                            </label>
+                            <label>
+                                <input type="radio" wire:model="posisi" value="Tidak Sesuai"> Tidak Sesuai
+                            </label>
+                        </div>
                         @error('posisi') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="mb-3">
-                        <label>Student Course</label>
-                        <input type="text" wire:model="kondisihouse" class="form-control">
+                        <label>Cek kondisi hose</label>
+                        <div>
+                            <label>
+                                <input type="radio" wire:model="kondisihouse" value="Sesuai"> Sesuai
+                            </label>
+                            <label>
+                                <input type="radio" wire:model="kondisihouse" value="Tidak Sesuai"> Tidak Sesuai
+                            </label>
+                        </div>
                         @error('kondisihouse') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="mb-3">
-                        <label>Student Course</label>
-                        <input type="text" wire:model="jumlah" class="form-control">
+                        <label>Cek Valve</label>
+                        <div>
+                            <label>
+                                <input type="radio" wire:model="valve" value="Sesuai"> Sesuai
+                            </label>
+                            <label>
+                                <input type="radio" wire:model="valve" value="Tidak Sesuai"> Tidak Sesuai
+                            </label>
+                        </div>
+                        @error('valve') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label>Cek jumlah dan jenis peralatan pada kabinet</label>
+                        <div>
+                            <label>
+                                <input type="radio" wire:model="jumlah" value="Sesuai"> Sesuai
+                            </label>
+                            <label>
+                                <input type="radio" wire:model="jumlah" value="Tidak Sesuai"> Tidak Sesuai
+                            </label>
+                        </div>
                         @error('jumlah') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="mb-3">
-                        <label>Student Course</label>
-                        <input type="text" wire:model="peralatan" class="form-control">
+                        <label>Cek peralatan dari korosi dan kotoran</label>
+                        <div>
+                            <label>
+                                <input type="radio" wire:model="peralatan" value="Sesuai"> Sesuai
+                            </label>
+                            <label>
+                                <input type="radio" wire:model="peralatan" value="Tidak Sesuai"> Tidak Sesuai
+                            </label>
+                        </div>
                         @error('peralatan') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="mb-3">
-                        <label>Student Course</label>
-                        <input type="text" wire:model="kondisikabinet" class="form-control">
+                        <label>Cek kondisi fisik kabinet</label>
+                        <div>
+                            <label>
+                                <input type="radio" wire:model="kondisikabinet" value="Sesuai"> Sesuai
+                            </label>
+                            <label>
+                                <input type="radio" wire:model="kondisikabinet" value="Tidak Sesuai"> Tidak Sesuai
+                            </label>
+                        </div>
                         @error('kondisikabinet') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="mb-3">
-                        <label>Student Course</label>
-                        <input type="text" wire:model="flow" class="form-control">
+                        <label>Flow test setiap setahun sekali</label>
+                        <div>
+                            <label>
+                                <input type="radio" wire:model="flow" value="Sesuai"> Sesuai
+                            </label>
+                            <label>
+                                <input type="radio" wire:model="flow" value="Tidak Sesuai"> Tidak Sesuai
+                            </label>
+                        </div>
                         @error('flow') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                 </div>
@@ -73,44 +134,105 @@
             </div>
             <form wire:submit.prevent="updateHydra">
                 <div class="modal-body">
-                    <div class="mb-3">
+                <div class="mb-3">
                         <label>Nama</label>
                         <input type="text" wire:model="nama" class="form-control">
                         @error('nama') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="mb-3">
-                        <label>Student Email</label>
-                        <input type="text" wire:model="lokasi" class="form-control">
+                        <label>Lokasi Hydrant</label>
+                        <select wire:model="lokasi" class="form-control">
+                        <option value=" "> </option>
+                            <option value="Parkiran Mobil Lt.1">Parkiran Mobil Lt.1</option>
+                            <option value="Ruang Pertemuan Lt. 2">Ruang Pertemuan Lt. 2</option>
+                            <option value="Depan Ruang Staff Pelatihan dan TU">Depan Ruang Staff Pelatihan dan TU</option>
+                            <option value="Depan Toilet Wanita Lt.3">Depan Toilet Wanita Lt.3</option>
+                            <option value="Samping Lift Barang Lt.3">Samping Lift Barang Lt.3</option>
+                        </select>
                         @error('lokasi') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="mb-3">
-                        <label>Student Course</label>
-                        <input type="text" wire:model="posisi" class="form-control">
+                        <label>Pastikan posisi kabinet tidak terhalang oleh penempatan material</label>
+                        <div>
+                            <label>
+                                <input type="radio" wire:model="posisi" value="Sesuai"> Sesuai
+                            </label>
+                            <label>
+                                <input type="radio" wire:model="posisi" value="Tidak Sesuai"> Tidak Sesuai
+                            </label>
+                        </div>
                         @error('posisi') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="mb-3">
-                        <label>Student Course</label>
-                        <input type="text" wire:model="kondisihouse" class="form-control">
+                        <label>Cek kondisi hose</label>
+                        <div>
+                            <label>
+                                <input type="radio" wire:model="kondisihouse" value="Sesuai"> Sesuai
+                            </label>
+                            <label>
+                                <input type="radio" wire:model="kondisihouse" value="Tidak Sesuai"> Tidak Sesuai
+                            </label>
+                        </div>
                         @error('kondisihouse') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="mb-3">
-                        <label>Student Course</label>
-                        <input type="text" wire:model="jumlah" class="form-control">
+                        <label>Cek Valve</label>
+                        <div>
+                            <label>
+                                <input type="radio" wire:model="valve" value="Sesuai"> Sesuai
+                            </label>
+                            <label>
+                                <input type="radio" wire:model="valve" value="Tidak Sesuai"> Tidak Sesuai
+                            </label>
+                        </div>
+                        @error('valve') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label>Cek jumlah dan jenis peralatan pada kabinet</label>
+                        <div>
+                            <label>
+                                <input type="radio" wire:model="jumlah" value="Sesuai"> Sesuai
+                            </label>
+                            <label>
+                                <input type="radio" wire:model="jumlah" value="Tidak Sesuai"> Tidak Sesuai
+                            </label>
+                        </div>
                         @error('jumlah') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="mb-3">
-                        <label>Student Course</label>
-                        <input type="text" wire:model="peralatan" class="form-control">
+                        <label>Cek peralatan dari korosi dan kotoran</label>
+                        <div>
+                            <label>
+                                <input type="radio" wire:model="peralatan" value="Sesuai"> Sesuai
+                            </label>
+                            <label>
+                                <input type="radio" wire:model="peralatan" value="Tidak Sesuai"> Tidak Sesuai
+                            </label>
+                        </div>
                         @error('peralatan') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="mb-3">
-                        <label>Student Course</label>
-                        <input type="text" wire:model="kondisikabinet" class="form-control">
+                        <label>Cek kondisi fisik kabinet</label>
+                        <div>
+                            <label>
+                                <input type="radio" wire:model="kondisikabinet" value="Sesuai"> Sesuai
+                            </label>
+                            <label>
+                                <input type="radio" wire:model="kondisikabinet" value="Tidak Sesuai"> Tidak Sesuai
+                            </label>
+                        </div>
                         @error('kondisikabinet') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="mb-3">
-                        <label>Student Course</label>
-                        <input type="text" wire:model="flow" class="form-control">
+                        <label>Flow test setiap setahun sekali</label>
+                        <div>
+                            <label>
+                                <input type="radio" wire:model="flow" value="Sesuai"> Sesuai
+                            </label>
+                            <label>
+                                <input type="radio" wire:model="flow" value="Tidak Sesuai"> Tidak Sesuai
+                            </label>
+                        </div>
                         @error('flow') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                 </div>
@@ -137,12 +259,12 @@
             </div>
             <form wire:submit.prevent="destroyHydra">
                 <div class="modal-body">
-                    <h4>Are you sure you want to delete this data ?</h4>
+                    <h4>apakah ingin menghapus data ini ?</h4>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" wire:click="closeModal"
                         data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Yes! Delete</button>
+                    <button type="submit" class="btn btn-primary">Iya Hapus</button>
                 </div>
             </form>
         </div>

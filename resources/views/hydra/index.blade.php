@@ -8,14 +8,3 @@
  
 @endsection
  
-@section('script')
-<script>
-
-    window.addEventListener('close-modal', event => {
- 
-        $('#hydraModal').modal('hide');
-        $('#updateHydraModal').modal('hide');
-        $('#deleteHydraModal').modal('hide');
-    })
-</script>
-@endsection

@@ -11,17 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('hydra', function (Blueprint $table) {
+        Schema::create('detector', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
             $table->string('lokasi');
-            $table->string('posisi');
-            $table->string('kondisihouse');
-            $table->string('valve');
-            $table->string('jumlah');
-            $table->string('peralatan');
-            $table->string('kondisikabinet');
-            $table->string('flow');
+            $table->string('signal');
+            $table->string('kondisi');
+            $table->string('alarm');
+            $table->string('fisik');
+            $table->string('pengetesan');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('hydra');
+        Schema::dropIfExists('detector');
     }
 };
