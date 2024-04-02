@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -75,44 +75,39 @@
                             </a>
                             
 
-                        </li>
+            </li>
+            
+            <li
+                class="sidebar-item  has-sub">
+                <a href="#" class='sidebar-link'>
+                    <i class="bi bi-stack"></i>
+                    <span>Jumlah Limbah</span>
+                </a>
+                
+                <ul class="submenu ">
+                    
+                    <li class="submenu-item  ">
+                        <a href="component-accordion.html" class="submenu-link">Limba Masuk</a>
                         
-                        <li
-                            class="sidebar-item  has-sub">
-                            <a href="#" class='sidebar-link'>
-                                <i class="bi bi-stack"></i>
-                                <span>Limba Master</span>
-                            </a>
-                            
-                            <ul class="submenu ">
-                                
-                                <li class="submenu-item  ">
-                                    <a href="component-accordion.html" class="submenu-link">Jumlah Limba</a>
-                                    
-                                </li>
-
-                                <li class="submenu-item  ">
-                                    <a href="component-accordion.html" class="submenu-link">Limba Masuk</a>
-                                    
-                                </li>
-                                
-                                <li class="submenu-item  ">
-                                    <a href="component-alert.html" class="submenu-link">Limba Keluar</a>
-                                    
-                                </li>
-                                
-                            </ul>
-                            
+                    </li>
+                    
+                    <li class="submenu-item  ">
+                        <a href="component-alert.html" class="submenu-link">Limba Keluar</a>
+                        
+                    </li>
+                    
+                </ul>
+                
 
                         </li>
 
-                        <li
-                            class="sidebar-item active ">
-                            <a href="hydra" class='sidebar-link'>
-                                <i class="bi bi-file-earmark-medical-fill"></i>
-                                <span>Hydrant</span>
-                            </a>
-                            
+            <li
+                class="sidebar-item active ">
+                <a href="form-layout.html" class='sidebar-link'>
+                    <i class="bi bi-file-earmark-medical-fill"></i>
+                    <span>Hydra</span>
+                </a>
+                
 
                         </li>
 
