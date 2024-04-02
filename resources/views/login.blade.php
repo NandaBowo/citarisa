@@ -7,7 +7,7 @@
     </head>
     <body>
         <div class="center">
-            <h1>Sisarasa</h1>
+            <h1>Sitarisa</h1>
             @error('name')
                 <h3 style="text-align: center; color: red; margin-top: 16px;">{{ $message }}</h3>
             @enderror

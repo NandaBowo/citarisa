@@ -13,11 +13,12 @@ return new class extends Migration
     {
         Schema::create('limbah_masuks', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('sumber_limbah_id');
+            $table->foreign('sumber_limbah_id')->references('id')->on('master_limbahs');
             $table->string("jenis_limbah");
             $table->date("tanggal_masuk_limbah");
-            $table->string("sumber_limbah");
             $table->float("jumlah_limbah");
-            $table->date("maksimal_penyimpanan_limbah");
+            $table->date("tanggal_exp_limbah");
             $table->timestamps();
         });
     }
