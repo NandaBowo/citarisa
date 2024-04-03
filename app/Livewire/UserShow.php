@@ -4,7 +4,8 @@ namespace App\Livewire;
 
 use Livewire\WithPagination;
 use Livewire\Component;
-use App\Models\Sadmin; 
+use App\Models\Sadmin;
+use Illuminate\Validation\Rules\Password;
 
 class UserShow extends Component
 {
@@ -34,7 +35,12 @@ class UserShow extends Component
     {
         $validatedData = $this->validate();
  
-        Sadmin::create($validatedData);
+        Sadmin::create([
+            'name' => $this->name,
+            'email' => $this->email,
+            'password' => bcrypt($this->password),
+        ]);
+
         session()->flash('message','User Added Successfully');
         $this->resetInput();
         $this->dispatch('close-modal');
@@ -61,7 +67,11 @@ class UserShow extends Component
     {
         $validatedData = $this->validate();
  
-        Sadmin::where('id',$this->sadmin_id)->update($validatedData);
+        Sadmin::where('id',$this->sadmin_id)->update([
+            'name' => $this->name,
+            'email' => $this->email,
+            'password' => bcrypt($this->password),
+        ]);
         session()->flash('message','User Updated Successfully');
         $this->resetInput();
         $this->dispatch('close-modal');
