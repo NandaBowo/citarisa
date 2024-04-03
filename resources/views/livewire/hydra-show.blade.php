@@ -1,6 +1,6 @@
 <div class="page-heading">
 
-    @include('livewire.hydramodal')
+    @include('modal.hydramodal')
     <div class="page-title">
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
@@ -76,14 +76,7 @@
             </div>
         </div>
     </section>
-    <script>
-    window.addEventListener('close-modal', event => {
-        $('#hydraModal').modal('hide');
-        $('#updateHydraModal').modal('hide');
-        $('#deleteHydraModal').modal('hide');
-        $('.modal-backdrop').remove();
-    });
-</script>
+    
 </div>
 
 
