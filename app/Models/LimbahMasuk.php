@@ -10,7 +10,7 @@ class LimbahMasuk extends Model
 {
     use HasFactory;
 
-    protected $fillable = ["sumber_limbah_id", "jenis_limbah", "tanggal_masuk_limbah", "jumlah_limbah", "tanggal_exp_limbah"];
+    protected $fillable = ["jenis_limbah_id", "sumber_limbah", "tanggal_masuk_limbah", "jumlah_limbah", "tanggal_exp_limbah"];
 
     public function masterLimbah() : BelongsTo
     {
