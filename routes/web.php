@@ -26,6 +26,7 @@ Route::get('/', function () {
 Route::get('/login', [AuthController::class, 'getLogin']);
 Route::post('/login', [AuthController::class, 'postLogin']);
 Route::get('/logout', [AuthController::class, 'logout']);
+
 Route::get('/apar', [App\Http\Controllers\AparController::class, 'index'])->name('apar');
 Route::get('/detector', [App\Http\Controllers\DetectorController::class, 'index'])->name('detector');
 Route::get('/hydra', [HydraController::class, 'index'])->name('hydra');
