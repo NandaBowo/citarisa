@@ -34,7 +34,8 @@
                     @foreach ($master_limbah as $ms)
                         <tr>
                             <th scope="row">{{ $loop->iteration }}</th>
-                            <td>{{ $ms->sumber_limbah }}</td>
+                            <td>{{ $ms->data }}</td>
+                            <td>{{ $ms->kategori }}</td>
                             <td>{{ $ms->kuantitas }}</td>
                             <td>
                                 <div class="btn-group">
@@ -49,20 +50,28 @@
         </div>
     </div>
 
-    <!-- Modal -->
+    <!-- Modal Add -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Form Tambah Sumber Baru</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Form Tambah Master Data Baru</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form action="/master_limbah" method="post">
                     @csrf
                     <div class="modal-body">
                         <div class="mb-3">
-                            <label for="sumber_limbah" class="form-label">Sumber Limbah</label>
-                            <input type="text" class="form-control" id="sumber_limbah" name="sumber_limbah" required>
+                            <label for="data" class="form-label">Data Master</label>
+                            <input type="text" class="form-control" id="data" name="data" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="kategori" class="form-label">Kategori</label>
+                            <select class="form-select" id="kategori" name="kategori" required>
+                                <option disabled selected value>Pilih Kategori</option>
+                                <option value="Limbah">Limbah</option>
+                                <option value="Lokasi">Lokasi</option>
+                            </select>
                         </div>
                     </div>
                     <div class="modal-footer">

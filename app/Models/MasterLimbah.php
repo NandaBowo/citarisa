@@ -10,7 +10,7 @@ class MasterLimbah extends Model
 {
     use HasFactory;
 
-    protected $fillable = ["sumber_limbah"];
+    protected $fillable = ["data", "kategori"];
 
     public function limbahMasuk() : HasMany {
         return $this->hasMany(LimbahMasuk::class);

@@ -21,7 +21,8 @@ class LimbahController extends Controller
     function masterLimbahAdd(Request $request) : RedirectResponse
     {
         $master_limbah = MasterLimbah::create([
-            "sumber_limbah" => $request->sumber_limbah
+            "data" => $request->data,
+            "kategori" => $request->kategori,
         ]);
 
         return redirect('/master_limbah')->with('status', "Data berhasil ditambahkan!");
