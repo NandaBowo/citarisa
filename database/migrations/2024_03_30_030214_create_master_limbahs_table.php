@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('master_limbahs', function (Blueprint $table) {
             $table->id();
-            $table->string('sumber_limbah');
+            $table->string('data');
+            $table->string('kategori');
             $table->integer('kuantitas')->default(0);
             $table->timestamps();
         });

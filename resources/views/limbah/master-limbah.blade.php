@@ -2,15 +2,15 @@
  
 @section('content')
 
-    <h1>Master Data Sumber Limbah</h1>
+    <h1>Master Data</h1>
 
     <div class="card">
         <div class="card-header">
-            <h4 class="text-center">SUMBER LIMBAH B 3</h4>
+            <h4 class="text-center">MASTER DATA</h4>
         </div>
         <div class="mx-4 mb-3">
             <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Tambah Sumber Limbah
+                Tambah Master Data
             </button>
             <a href="/limbah_keluar" class="btn btn-success ms-2">Export Data Excel</a>
         </div>
@@ -24,7 +24,8 @@
                 <thead>
                   <tr>
                     <th scope="col">No. </th>
-                    <th scope="col">Sumber Limbah B3</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Kategori</th>
                     <th scope="col">Kuantitas</th>
                     <th scope="col">Aksi</th>
                   </tr>

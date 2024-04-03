@@ -28,7 +28,7 @@
                 <div class="sidebar-header position-relative">
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="logo">
-                            <a href="">csirt</a>
+                            <a href="">Sitarisa</a>
                         </div>
                         <div class="theme-toggle d-flex gap-2  align-items-center mt-2">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
@@ -73,9 +73,15 @@
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Data Survey</span>
                             </a>
-                            
+                        </li>
 
-            </li>
+                        <li
+                            class="sidebar-item  ">
+                            <a href="/master_limbah" class='sidebar-link'>
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Master Data</span>
+                            </a>
+                        </li>
             
             <li
                 class="sidebar-item  has-sub">
@@ -85,14 +91,9 @@
                 </a>
                 
                 <ul class="submenu ">
-                    
-                    <li class="submenu-item  ">
-                        <a href="/master_limbah" class="submenu-link">Master Limbah</a>
-                    </li>
 
                     <li class="submenu-item  ">
                         <a href="/limbah_masuk" class="submenu-link">Limbah Masuk</a>
-                        <a href="component-accordion.html" class="submenu-link">Limba Masuk</a>
                         
                     </li>
                     
@@ -102,7 +103,6 @@
 
                     <li class="submenu-item  ">
                         <a href="/jumlah_limbah" class="submenu-link">Jumlah Limbah</a>
-                        <a href="component-alert.html" class="submenu-link">Limba Keluar</a>
                         
                     </li>
                     
@@ -115,7 +115,7 @@
                 class="sidebar-item active ">
                 <a href="form-layout.html" class='sidebar-link'>
                     <i class="bi bi-file-earmark-medical-fill"></i>
-                    <span>Hydra</span>
+                    <span>Hydrant</span>
                 </a>
                 
 
