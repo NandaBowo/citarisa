@@ -1,4 +1,4 @@
-@extends('layout.limbah')
+@extends('admin.admin')
  
 @section('content')
 
