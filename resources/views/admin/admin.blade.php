@@ -107,6 +107,7 @@
 
                         </li>
 
+                        @if (auth('sadmin')->check()) 
                         <li class="sidebar-item {{ request()->is('hydra') ? 'active' : '' }}">
                             <a href="{{ url('hydra') }}" class="sidebar-link">
                                 <i class="bi bi-file-earmark-medical-fill"></i>
@@ -127,6 +128,23 @@
                                 <span>Detector</span>
                             </a>
                         </li>
+                        <li class="sidebar-item {{ request()->is('user') ? 'active' : '' }}">
+                            <a href="{{ url('user') }}" class="sidebar-link">
+                                <i class="bi bi-file-earmark-medical-fill"></i>
+                                <span>User</span>
+                            </a>
+                        </li>
+                    @endif
+
+                    @if (auth('user')->check()) 
+                        <li class="sidebar-item {{ request()->is('apar') ? 'active' : '' }}">
+                            <a href="{{ url('apar') }}" class="sidebar-link">
+                                <i class="bi bi-file-earmark-medical-fill"></i>
+                                <span>Apar</span>
+                            </a>
+                        </li>
+                    @endif
+
 
                     
                         <li

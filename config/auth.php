@@ -40,6 +40,16 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'sadmin' => [
+            'driver' => 'session',
+            'provider' => 'sadmins',
+        ],
+
+        'user' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
     ],
 
     /*
@@ -65,10 +75,10 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'sadmins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Sadmin::class,
+        ],
     ],
 
     /*

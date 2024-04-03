@@ -17,13 +17,22 @@ class AuthController extends Controller
             'name' => ['required'],
             'password' => ['required'],
         ]);
-
-        if (Auth::attempt($credentials)) {
+    
+       
+        if (Auth::guard('sadmin')->attempt($credentials)) {
             $request->session()->regenerate();
-
+    
             return redirect()->intended('hydra');
         }
-
+    
+        
+        if (Auth::guard('user')->attempt($credentials)) {
+            $request->session()->regenerate();
+    
+            return redirect()->intended('apar');
+        }
+    
+        
         return back()->withErrors([
             'name' => 'Username atau password salah!',
         ])->onlyInput('name');
