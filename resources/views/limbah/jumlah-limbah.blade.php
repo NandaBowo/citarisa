@@ -24,7 +24,7 @@
                     @foreach ($jumlah_limbah as $jl)
                         <tr>
                             <th scope="row">{{ $loop->iteration }}</th>
-                            <td>{{ $jl->jenis_limbah }}</td>
+                            <td>{{ $jl->data }}</td>
                             <td>{{ $jl->jumlah_limbah }}</td>
                         </tr>
                     @endforeach

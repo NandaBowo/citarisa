@@ -36,7 +36,7 @@
                     @foreach ($limbah_keluar as $lk)
                         <tr>
                             <th scope="row">{{ $loop->iteration }}</th>
-                            <td>{{ $lk->jenis_limbah }}</td>
+                            <td>{{ $lk->data }}</td>
                             <td>{{ date("d M Y", strtotime($lk->tanggal_keluar_limbah)) }}</td>
                             <td>{{ $lk->jumlah_limbah_keluar }}</td>
                             <td>{{ $lk->tujuan_penyerahan }}</td>
@@ -66,16 +66,12 @@
                     @csrf
                     <div class="modal-body">
                         <div class="mb-3">
-                            <label for="jenis_limbah" class="form-label">Jenis Limbah B3 Masuk</label>
-                            <select class="form-select" id="jenis_limbah" name="jenis_limbah" required>
+                            <label for="jenis_limbah_id" class="form-label">Jenis Limbah B3 Masuk</label>
+                            <select class="form-select" id="jenis_limbah_id" name="jenis_limbah_id" required>
                                 <option disabled selected value>Pilih Jenis Limbah</option>
-                                <option value="Laboratorium">Laboratorium</option>
-                                <option value="Limbah Terkontaminasi">Limbah Terkontaminasi</option>
-                                <option value="Limbah Sludge Analisis">Limbah Sludge Analisis</option>
-                                <option value="Limbah Bahan Kimia Kadaluarsa">Limbah Bahan Kimia Kadaluarsa</option>
-                                <option value="Limbah Baterai/Elektronik">Limbah Baterai/Elektronik</option>
-                                <option value="Limbah Wadah Kimia Terkontaminasi">Limbah Wadah Kimia Terkontaminasi</option>
-                                <option value="Limbah Infeksius">Limbah Infeksius</option>
+                                @foreach ($master_limbah as $ml)
+                                    <option value="{{ $ml->id }}">{{ $ml->data }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="mb-3">

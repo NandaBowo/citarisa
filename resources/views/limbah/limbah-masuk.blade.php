@@ -36,7 +36,7 @@
                     @foreach ($limbah_masuk as $lb)
                         <tr>
                             <th scope="row">{{ $loop->iteration }}</th>
-                            <td>{{ $lb->jenis_limbah }}</td>
+                            <td>{{ $lb->data }}</td>
                             <td>{{ date("d M Y", strtotime($lb->tanggal_masuk_limbah)) }}</td>
                             <td>{{ $lb->sumber_limbah }}</td>
                             <td>{{ $lb->jumlah_limbah }}</td>
@@ -66,16 +66,12 @@
                     @csrf
                     <div class="modal-body">
                         <div class="mb-3">
-                            <label for="jenis_limbah" class="form-label">Jenis Limbah B3 Masuk</label>
-                            <select class="form-select" id="jenis_limbah" name="jenis_limbah" required>
+                            <label for="jenis_limbah_id" class="form-label">Jenis Limbah B3 Masuk</label>
+                            <select class="form-select" id="jenis_limbah_id" name="jenis_limbah_id" required>
                                 <option disabled selected value>Pilih Jenis Limbah</option>
-                                <option value="Laboratorium">Laboratorium</option>
-                                <option value="Limbah Terkontaminasi">Limbah Terkontaminasi</option>
-                                <option value="Limbah Sludge Analisis">Limbah Sludge Analisis</option>
-                                <option value="Limbah Bahan Kimia Kadaluarsa">Limbah Bahan Kimia Kadaluarsa</option>
-                                <option value="Limbah Baterai/Elektronik">Limbah Baterai/Elektronik</option>
-                                <option value="Limbah Wadah Kimia Terkontaminasi">Limbah Wadah Kimia Terkontaminasi</option>
-                                <option value="Limbah Infeksius">Limbah Infeksius</option>
+                                @foreach ($master_limbah as $ms)
+                                    <option value="{{ $ms->id }}">{{ $ms->data }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="mb-3">
@@ -83,13 +79,8 @@
                             <input type="date" class="form-control" id="tanggal_masuk_limbah" name="tanggal_masuk_limbah" required>
                         </div>
                         <div class="mb-3">
-                            <label for="sumber_limbah_id" class="form-label">Sumber Limbah B3 Masuk</label>
-                            <select class="form-select" id="sumber_limbah" name="sumber_limbah_id" required>
-                                <option disabled selected value>Pilih Sumber Limbah</option>
-                                @foreach ($master_limbah as $ms)
-                                    <option value="{{ $ms->id }}">{{ $ms->sumber_limbah }}</option>
-                                @endforeach
-                            </select>
+                            <label for="sumber_limbah" class="form-label">Sumber Limbah B3 Masuk</label>
+                            <input type="text" class="form-control" id="sumber_limbah" name="sumber_limbah" required>
                         </div>
                         <div class="mb-3">
                             <label for="jumlah_limbah" class="form-label">Jumlah Limbah B3 Masuk (KG)</label>

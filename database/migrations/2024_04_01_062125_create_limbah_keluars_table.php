@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('limbah_keluars', function (Blueprint $table) {
             $table->id();
-            $table->string('jenis_limbah');
+            $table->unsignedBigInteger('jenis_limbah_id');
+            $table->foreign('jenis_limbah_id')->references('id')->on('master_limbahs');
             $table->date('tanggal_keluar_limbah');
             $table->float('jumlah_limbah_keluar');
             $table->string('tujuan_penyerahan');
