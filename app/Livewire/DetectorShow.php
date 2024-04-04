@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Detector;
+use App\Models\MasterLimbah; 
 use Livewire\WithPagination;
 use Livewire\Component;
 
@@ -14,7 +15,7 @@ class DetectorShow extends Component
  
     public $nama, $lokasi, $signal, $kondisi, $alarm, $fisik, $pengetesan, $detector_id;
     public $search = '';
- 
+    public $lokasiOptions = '';
     protected function rules()
     {
         return [
@@ -109,6 +110,13 @@ class DetectorShow extends Component
         $this->alarm = '';
         $this->fisik = '';
         $this->pengetesan = '';
+    }
+
+    public function mount()
+    {
+       
+    $masterLimbah = MasterLimbah::where('kategori', 'Lokasi')->pluck('data');
+    $this->lokasiOptions = $masterLimbah->implode(',');
     }
  
     public function render()

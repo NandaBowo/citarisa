@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use Livewire\WithPagination;
 use App\Models\Hydra;
+use App\Models\MasterLimbah; 
 use Livewire\Component;
 
 class HydraShow extends Component
@@ -14,7 +15,8 @@ class HydraShow extends Component
  
     public $nama, $lokasi, $posisi, $kondisihouse, $valve, $jumlah, $peralatan, $kondisikabinet, $flow, $hydra_id;
     public $search = '';
- 
+    public $lokasiOptions = '';
+    
     protected function rules()
     {
         return [
@@ -115,7 +117,14 @@ class HydraShow extends Component
         $this->kondisikabinet = '';
         $this->flow = '';
     }
- 
+    
+    public function mount()
+    {
+       
+    $masterLimbah = MasterLimbah::where('kategori', 'Lokasi')->pluck('data');
+    $this->lokasiOptions = $masterLimbah->implode(',');
+    }
+
     public function render()
     {
         $hydra = Hydra::where('nama', 'like', '%'.$this->search.'%')->orderBy('id','DESC')->paginate(3);

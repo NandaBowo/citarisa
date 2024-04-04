@@ -1,7 +1,7 @@
 
 @extends('admin.admin')
  
-@section('title','Detector')
+@section('title','Data Detector')
 
 @section('content')
  

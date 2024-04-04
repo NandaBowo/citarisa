@@ -2,7 +2,7 @@
 
 @extends('admin.admin')
  
-@section('title','Apar')
+@section('title','Data Apar')
 
 @section('content')
  
@@ -24,4 +24,6 @@
         
     });
 </script>
+
+
 @endsection
