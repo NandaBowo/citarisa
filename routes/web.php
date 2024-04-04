@@ -31,12 +31,29 @@ Route::middleware('auth:sadmin,user')->group(function () {
     Route::get('/detector', [App\Http\Controllers\DetectorController::class, 'index'])->name('detector');
     Route::get('/user', [App\Http\Controllers\UserController::class, 'index'])->name('user');
     Route::get('/hydra', [HydraController::class, 'index'])->name('hydra');
+
+    // Route Master
     Route::get('/master_limbah', [LimbahController::class, 'masterLimbah']);
     Route::post('/master_limbah', [LimbahController::class, 'masterLimbahAdd']);
+    Route::get('/master_limbah/edit/{id}', function () {
+        return redirect('/master_limbah');
+    });
+    Route::put('/master_limbah/edit/{id}', [LimbahController::class, 'masterLimbahUpdate']);
+    Route::delete('/master_limbah/delete/{id}', [LimbahController::class, 'masterLimbahDelete']);
+
+    // Route Limbah Masuk
     Route::get('/limbah_masuk', [LimbahController::class, 'limbahMasuk'])->name('limbah_masuk');
     Route::post('/limbah_masuk', [LimbahController::class, 'limbahMasukAdd']);
+    Route::get('/limbah_masuk/edit/{id}', function () {
+        return redirect('/limbah_masuk');
+    });
+    Route::put('/limbah_masuk/edit/{id}', [LimbahController::class, 'limbahMasukUpdate']);
+
+    // Route Limbah Keluar
     Route::get('/limbah_keluar', [LimbahController::class, 'limbahKeluar'])->name('limbah_keluar');
     Route::post('/limbah_keluar', [LimbahController::class, 'limbahKeluarAdd']);
+
+    // Route Jumlah Limbah
     Route::get('/jumlah_limbah', [LimbahController::class, 'jumlahLimbah'])->name('jumlah_limbah');
 });
 
