@@ -43,8 +43,8 @@
                             <td>{{ date("d M Y", strtotime($lb->tanggal_exp_limbah)) }}</td>
                             <td>
                                 <div class="btn-group">
-                                    <a href="/limbah_keluar" class="btn btn-sm btn-warning me-2">Ubah</a>
-                                    <a href="/limbah_keluar" class="btn btn-sm btn-danger ms-2">Hapus</a>
+                                    <a href="/limbah_masuk" class="btn btn-sm btn-warning me-2" data-bs-toggle="modal" data-bs-target="#updateModal{{ $lb->id }}">Ubah</a>
+                                    <a href="/limbah_masuk/delete/{{ $lb->id }}" class="btn btn-sm btn-danger ms-2">Hapus</a>
                                 </div>
                             </td>
                         </tr>
@@ -54,7 +54,7 @@
         </div>
     </div>
 
-    <!-- Modal -->
+    <!-- Modal Add -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -99,5 +99,54 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal Update -->
+    @foreach ($limbah_masuk as $lb)
+        <div class="modal fade" id="updateModal{{ $lb->id }}" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="updateModalLabel">Form Tambah Data Baru</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action="/limbah_masuk/edit/{{ $lb->id }}" method="post">
+                        @csrf
+                        @method('put')
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="jenis_limbah_id" class="form-label">Jenis Limbah B3 Masuk</label>
+                                <select class="form-select" id="jenis_limbah_id" name="jenis_limbah_id" required>
+                                    <option disabled selected value>Pilih Jenis Limbah</option>
+                                    @foreach ($master_limbah as $ms)
+                                        <option value="{{ $ms->id }}">{{ $ms->data }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="tanggal_masuk_limbah" class="form-label">Tanggal Masuk Limbah B3</label>
+                                <input type="date" class="form-control" id="tanggal_masuk_limbah" name="tanggal_masuk_limbah" value="{{ $lb->tanggal_masuk_limbah }}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="sumber_limbah" class="form-label">Sumber Limbah B3 Masuk</label>
+                                <input type="text" class="form-control" id="sumber_limbah" name="sumber_limbah" value="{{ $lb->sumber_limbah }}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="jumlah_limbah" class="form-label">Jumlah Limbah B3 Masuk (KG)</label>
+                                <input type="number" step="0.01" class="form-control" id="jumlah_limbah" name="jumlah_limbah" value="{{ $lb->jumlah_limbah }}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="durasi_exp_limbah" class="form-label">Durasi Expired Limbah (Hari)</label>
+                                <input type="number" class="form-control" id="durasi_exp_limbah" name="durasi_exp_limbah">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Simpan Data</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    @endforeach
  
 @endsection

@@ -9,6 +9,7 @@ use App\Models\MasterLimbah;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Throwable;
 
 class LimbahController extends Controller
 {
@@ -28,8 +29,30 @@ class LimbahController extends Controller
         return redirect('/master_limbah')->with('status', "Data berhasil ditambahkan!");
     }
 
+    function masterLimbahUpdate(Request $request, $id) : RedirectResponse
+    {
+        MasterLimbah::where('id', $id)->update([
+            "data" => $request->data,
+            "kategori" => $request->kategori,
+        ]);
+
+        return redirect('/master_limbah')->with('status', "Data berhasil diupdate!");
+    }
+
+    function masterLimbahDelete($id) : RedirectResponse
+    {
+        try {
+            MasterLimbah::where('id', $id)->delete();
+        } catch (Throwable $e) {
+            report($e);
+            return redirect('/master_limbah')->with('status', "Anda tidak dapat menghapus data yang telah digunakan!");
+        }
+
+        return redirect('/master_limbah')->with('status', "Data berhasil dihapus!");
+    }
+
     function limbahMasuk() {
-        $limbah_masuk = LimbahMasuk::join('master_limbahs', 'limbah_masuks.jenis_limbah_id', '=', 'master_limbahs.id')->get();
+        $limbah_masuk = LimbahMasuk::join('master_limbahs', 'limbah_masuks.jenis_limbah_id', '=', 'master_limbahs.id')->select("limbah_masuks.*", "master_limbahs.data")->get();
         $master_limbah = MasterLimbah::where('kategori', 'Limbah')->get();
 
         return view("limbah.limbah-masuk", compact("limbah_masuk", "master_limbah"));
@@ -68,6 +91,48 @@ class LimbahController extends Controller
         }
 
         return redirect('/limbah_masuk')->with('status', "Data limbah berhasil ditambahkan!");
+    }
+
+    function limbahMasukUpdate(Request $request, $id) : RedirectResponse
+    {
+        $date = $request->tanggal_masuk_limbah;
+        $daysToAdd = intval($request->durasi_exp_limbah);
+        $newDate = date("Y-m-d", strtotime("+{$daysToAdd} days", strtotime($date)));
+
+        $limbah_masuk = LimbahMasuk::where('id', $id)->first();
+        $jumlah_limbah = JumlahLimbah::where('jenis_limbah_id', $request->jenis_limbah_id)->first();
+
+        $limbah = $jumlah_limbah->jumlah_limbah - $limbah_masuk->jumlah_limbah;
+
+        JumlahLimbah::updateOrInsert(["jenis_limbah_id" => $request->jenis_limbah_id], ["jumlah_limbah" => $limbah]);
+
+        LimbahMasuk::where('id', $id)->update([
+            "jenis_limbah_id" => $request->jenis_limbah_id,
+            "sumber_limbah" => $request->sumber_limbah,
+            "tanggal_masuk_limbah" => $request->tanggal_masuk_limbah,
+            "jumlah_limbah" => $request->jumlah_limbah,
+            "tanggal_exp_limbah" => $newDate,
+        ]);
+
+        $get_jumlah_limbah = JumlahLimbah::where('jenis_limbah_id', $request->jenis_limbah_id)->get();
+
+        if ($get_jumlah_limbah == "[]") {
+            JumlahLimbah::updateOrInsert(["jenis_limbah_id" => $request->jenis_limbah_id], ["jumlah_limbah" => $request->jumlah_limbah]);
+        } else {
+            $getdata = JumlahLimbah::where('jenis_limbah_id', $request->jenis_limbah_id)->first();
+            
+            $data_baru = $getdata->jumlah_limbah + $request->jumlah_limbah;
+
+            JumlahLimbah::updateOrInsert(["jenis_limbah_id" => $request->jenis_limbah_id], ["jumlah_limbah" => $data_baru]);
+        }
+
+        $jenis_limbah_count = LimbahMasuk::select(DB::raw('jenis_limbah_id, count(*) as count'))->groupBy('jenis_limbah_id')->get();
+
+        foreach ($jenis_limbah_count as $jlc) {
+            MasterLimbah::where('id', $jlc->jenis_limbah_id)->update(['kuantitas' => $jlc->count]);
+        }
+
+        return redirect('/limbah_masuk')->with('status', "Data limbah berhasil diupdate!");
     }
 
     function limbahKeluar() {

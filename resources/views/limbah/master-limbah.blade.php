@@ -16,7 +16,7 @@
         </div>
         @session('status')
             <div class="mx-4 mt-4 mb-3">
-                <p class="fw-bold text-light bg-success w-25 text-center rounded">{{ session('status') }}</p>
+                <p class="fw-bold text-light bg-success w-50 text-center rounded">{{ session('status') }}</p>
             </div>
         @endsession
         <div class="card-body">
@@ -39,8 +39,12 @@
                             <td>{{ $ms->kuantitas }}</td>
                             <td>
                                 <div class="btn-group">
-                                    <a href="/master_limbah" class="btn btn-sm btn-warning me-2" data-bs-toggle="modal" data-bs-target="#updateModal">Ubah</a>
-                                    <a href="/limbah_keluar" class="btn btn-sm btn-danger ms-2">Hapus</a>
+                                    <a href="/master_limbah" class="btn btn-sm btn-warning me-2" data-bs-toggle="modal" data-bs-target="#updateModal{{ $ms->id }}">Ubah</a>
+                                    <form action="/master_limbah/delete/{{ $ms->id }}" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')" type="submit" class="btn btn-sm btn-danger ms-2">Hapus</button>
+                                    </form>
                                 </div>
                             </td>
                         </tr>
@@ -84,28 +88,39 @@
     </div>
 
     <!-- Modal Update -->
-    <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="updateModalLabel">Form Update Sumber Baru</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form action="/master_limbah/edit/" method="post">
-                    @csrf
-                    <div class="modal-body">
-                        <div class="mb-3">
-                            <label for="sumber_limbah" class="form-label">Sumber Limbah</label>
-                            <input type="text" class="form-control" id="sumber_limbah" name="sumber_limbah" required>
+    @foreach ($master_limbah as $ms)
+        <div class="modal fade" id="updateModal{{ $ms->id }}" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="updateModalLabel">Form Update Master Data</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action="/master_limbah/edit/{{ $ms->id }}" method="post">
+                        @csrf
+                        @method('put')
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="data" class="form-label">Data Master</label>
+                                <input type="text" class="form-control" id="data" name="data" value="{{ $ms->data }}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="kategori" class="form-label">Kategori</label>
+                                <select class="form-select" id="kategori" name="kategori" required>
+                                    <option disabled selected value>Pilih Kategori</option>
+                                    <option value="Limbah">Limbah</option>
+                                    <option value="Lokasi">Lokasi</option>
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Simpan Data</button>
-                    </div>
-                </form>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Simpan Data</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
+    @endforeach
  
 @endsection
