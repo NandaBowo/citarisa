@@ -67,6 +67,10 @@
                     <ul class="menu">
                         <li class="sidebar-title">Menu</li>
                         
+                        
+
+                        @if (auth('sadmin')->check()) 
+
                         <li
                             class="sidebar-item  ">
                             <a href="index.html" class='sidebar-link'>
@@ -75,9 +79,9 @@
                             </a>
                         </li>
 
-                        <li
-                            class="sidebar-item  ">
-                            <a href="/master_limbah" class='sidebar-link'>
+                       <li
+                            class="sidebar-item {{ request()->is('master_limbah') ? 'active' : '' }} ">
+                            <a href="{{ url('master_limbah') }}" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Master Data</span>
                             </a>
@@ -107,7 +111,6 @@
 
                         </li>
 
-                        @if (auth('sadmin')->check()) 
                         <li class="sidebar-item {{ request()->is('hydra') ? 'active' : '' }}">
                             <a href="{{ url('hydra') }}" class="sidebar-link">
                                 <i class="bi bi-file-earmark-medical-fill"></i>
@@ -128,19 +131,78 @@
                                 <span>Detector</span>
                             </a>
                         </li>
-                        <li class="sidebar-item {{ request()->is('user') ? 'active' : '' }}">
-                            <a href="{{ url('user') }}" class="sidebar-link">
-                                <i class="bi bi-file-earmark-medical-fill"></i>
-                                <span>User</span>
-                            </a>
-                        </li>
+                        
+                        
                     @endif
 
                     @if (auth('user')->check()) 
+
+                    <li
+                            class="sidebar-item  ">
+                            <a href="index.html" class='sidebar-link'>
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Data Survey</span>
+                            </a>
+                        </li>
+
+                        <li
+                            class="sidebar-item {{ request()->is('master_limbah') ? 'active' : '' }} ">
+                            <a href="{{ url('master_limbah') }}" class='sidebar-link'>
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Master Data</span>
+                            </a>
+                        </li>
+            
+                        <li
+                            class="sidebar-item  has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i class="bi bi-stack"></i>
+                                <span>Limbah</span>
+                            </a>
+                            
+                            <ul class="submenu ">
+
+                                <li class="submenu-item {{ request()->is('limbah_masuk') ? 'active' : '' }}">
+                                    <a href="{{ route('limbah_masuk') }}" class="submenu-link">Limbah Masuk</a>
+                                </li>
+                                <li class="submenu-item {{ request()->is('limbah_keluar') ? 'active' : '' }}">
+                                    <a href="{{ route('limbah_keluar') }}" class="submenu-link">Limbah Keluar</a>
+                                </li>
+                                <li class="submenu-item {{ request()->is('jumlah_limbah') ? 'active' : '' }}">
+                                    <a href="{{ route('jumlah_limbah') }}" class="submenu-link">Jumlah Limbah</a>
+                                </li>
+                                
+                            </ul>
+                            
+
+                        </li>
+
+                        <li class="sidebar-item {{ request()->is('hydra') ? 'active' : '' }}">
+                            <a href="{{ url('hydra') }}" class="sidebar-link">
+                                <i class="bi bi-file-earmark-medical-fill"></i>
+                                <span>Hydrant</span>
+                            </a>
+                        </li>
+
                         <li class="sidebar-item {{ request()->is('apar') ? 'active' : '' }}">
                             <a href="{{ url('apar') }}" class="sidebar-link">
                                 <i class="bi bi-file-earmark-medical-fill"></i>
                                 <span>Apar</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item {{ request()->is('detector') ? 'active' : '' }}">
+                            <a href="{{ url('detector') }}" class="sidebar-link">
+                                <i class="bi bi-file-earmark-medical-fill"></i>
+                                <span>Detector</span>
+                            </a>
+                        </li>
+
+                        
+                        <li class="sidebar-item {{ request()->is('user') ? 'active' : '' }}">
+                            <a href="{{ url('user') }}" class="sidebar-link">
+                            <i class="bi bi-person-fill-add"></i>
+                                <span>User</span>
                             </a>
                         </li>
                     @endif
@@ -150,7 +212,7 @@
                         <li
                         class="sidebar-item  ">
                         <a href="/logout" class='sidebar-link'>
-                            <i class="bi bi-file-earmark-medical-fill"></i>
+                            <i class="bi bi-box-arrow-left"></i>
                             <span>Logout</span>
                         </a>
                         </li>
@@ -194,18 +256,9 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
+@yield('script')
 @livewireScripts
-<script>
-        window.addEventListener('close-modal', event => {
-        $('#aparModal').modal('hide');
-        $('#updateaparModal').modal('hide');
-        $('#deleteaparModal').modal('hide');
-        $('.modal-backdrop').remove();
-        
-        location.reload();
-        
-    });
-</script>
+
 
 </body>
 

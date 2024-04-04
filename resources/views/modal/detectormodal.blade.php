@@ -16,8 +16,13 @@
                         @error('nama') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="mb-3">
-                        <label>Lokasi Fire Alarm</label>
-                        <input type="text" wire:model="lokasi" class="form-control">
+                        <label for="lokasi">Lokasi Fire Alarm</label>
+                        <select wire:model="lokasi" class="form-control" id="lokasi">
+                            <option value="">-- Pilih Lokasi --</option>
+                            @foreach(explode(',', $lokasiOptions) as $option)
+                                <option value="{{ $option }}">{{ $option }}</option>
+                            @endforeach
+                        </select>
                         @error('lokasi') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="mb-3">
@@ -91,7 +96,7 @@
     </div>
 </div>
  
-<!-- Update Student Modal -->
+<!-- Update  Modal -->
 <div wire:ignore.self class="modal fade" id="updateDetectorModal" tabindex="-1" aria-labelledby="updateDetectorModalLabel"
     aria-hidden="true">
     <div class="modal-dialog">
@@ -109,8 +114,13 @@
                         @error('nama') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="mb-3">
-                        <label>Lokasi Fire Alarm</label>
-                        <input type="text" wire:model="lokasi" class="form-control">
+                        <label for="lokasi">Lokasi Fire Alarm</label>
+                        <select wire:model="lokasi" class="form-control" id="lokasi">
+                            <option value="">-- Pilih Lokasi --</option>
+                            @foreach(explode(',', $lokasiOptions) as $option)
+                                <option value="{{ $option }}">{{ $option }}</option>
+                            @endforeach
+                        </select>
                         @error('lokasi') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="mb-3">
@@ -186,7 +196,7 @@
 </div>
  
  
-<!-- Delete Student Modal -->
+<!-- Delete  Modal -->
 <div wire:ignore.self class="modal fade" id="deleteDetectorModal" tabindex="-1" aria-labelledby="deleteDetectorModalLabel"
     aria-hidden="true">
     <div class="modal-dialog">

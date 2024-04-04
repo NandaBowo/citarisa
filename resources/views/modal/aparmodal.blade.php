@@ -27,37 +27,12 @@
                         @error('jenis') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="mb-3">
-                        <label>Lokasi Penempatan</label>
-                        <select wire:model="lokasi" class="form-control">
-                            <option value=" ">--Pilih Lokasi--</option>
-                            <option value="Car Way 1">Car Way 1</option>
-                            <option value="Car Way 2">Car Way 2</option>
-                            <option value="Car Way 3">Car Way 3</option>
-                            <option value="Depan Gudang">Depan Gudang</option>
-                            <option value="Depan Rumah Penjaga">Depan Rumah Penjaga</option>
-                            <option value="Kantin">Kantin</option>
-                            <option value="Gedung Existing Lt.2">Gedung Existing Lt.2</option>
-                            <option value="Ruang Pertemuan 1">Ruang Pertemuan 1</option>
-                            <option value="Ruang Pertemuan 2">Ruang Pertemuan 2</option>
-                            <option value="Depan Mushalla">Depan Mushalla</option>
-                            <option value="Depan Toilet Wanita">Depan Toilet Wanita</option>
-                            <option value="Depan Ruang Panel">Depan Ruang Panel</option>
-                            <option value="Ruang Rapat">Ruang Rapat</option>
-                            <option value="Depan Ruang Kepala">Depan Ruang Kepala</option>
-                            <option value="Ruang Komputer">Ruang Komputer</option>
-                            <option value="Ruang LHU Lt.3">Ruang LHU Lt.3</option>
-                            <option value="Ruang Mutu Teknis">Ruang Mutu Teknis</option>
-                            <option value="Ruang Staff Fungsional">Ruang Staff Fungsional</option>
-                            <option value="Ruang Staff">Ruang Staff</option>
-                            <option value="Depan Ruang KASI">Depan Ruang KASI</option>
-                            <option value="Depan Toilet Wanita">Depan Toilet Wanita</option>
-                            <option value="Ruang Pengolahan Data">Ruang Pengolahan Data</option>
-                            <option value="Ruang Lemari Asam">Ruang Lemari Asam</option>
-                            <option value="Ruang Pengeringan">Ruang Pengeringan</option>
-                            <option value="Depang R. Bahan Kimia">Depang R. Bahan Kimia</option>
-                            <option value="Ruang Spechtro">Ruang Spechtro</option>
-                            <option value="Ruang AAS">Ruang AAS</option>
-            
+                        <label for="lokasi">Lokasi Penempatan</label>
+                        <select wire:model="lokasi" class="form-control" id="lokasi">
+                            <option value="">-- Pilih Lokasi --</option>
+                            @foreach(explode(',', $lokasiOptions) as $option)
+                                <option value="{{ $option }}">{{ $option }}</option>
+                            @endforeach
                         </select>
                         @error('lokasi') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
@@ -107,7 +82,7 @@
     </div>
 </div>
  
-<!-- Update Student Modal -->
+<!-- Update  Modal -->
 <div wire:ignore.self class="modal fade" id="updateAparModal" tabindex="-1" aria-labelledby="updateAparModalLabel"
     aria-hidden="true">
     <div class="modal-dialog">
@@ -136,37 +111,12 @@
                         @error('jenis') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="mb-3">
-                        <label>Lokasi Penempatan</label>
-                        <select wire:model="lokasi" class="form-control">
-                            <option value=" ">--Pilih Lokasi--</option>
-                            <option value="Car Way 1">Car Way 1</option>
-                            <option value="Car Way 2">Car Way 2</option>
-                            <option value="Car Way 3">Car Way 3</option>
-                            <option value="Depan Gudang">Depan Gudang</option>
-                            <option value="Depan Rumah Penjaga">Depan Rumah Penjaga</option>
-                            <option value="Kantin">Kantin</option>
-                            <option value="Gedung Existing Lt.2">Gedung Existing Lt.2</option>
-                            <option value="Ruang Pertemuan 1">Ruang Pertemuan 1</option>
-                            <option value="Ruang Pertemuan 2">Ruang Pertemuan 2</option>
-                            <option value="Depan Mushalla">Depan Mushalla</option>
-                            <option value="Depan Toilet Wanita">Depan Toilet Wanita</option>
-                            <option value="Depan Ruang Panel">Depan Ruang Panel</option>
-                            <option value="Ruang Rapat">Ruang Rapat</option>
-                            <option value="Depan Ruang Kepala">Depan Ruang Kepala</option>
-                            <option value="Ruang Komputer">Ruang Komputer</option>
-                            <option value="Ruang LHU Lt.3">Ruang LHU Lt.3</option>
-                            <option value="Ruang Mutu Teknis">Ruang Mutu Teknis</option>
-                            <option value="Ruang Staff Fungsional">Ruang Staff Fungsional</option>
-                            <option value="Ruang Staff">Ruang Staff</option>
-                            <option value="Depan Ruang KASI">Depan Ruang KASI</option>
-                            <option value="Depan Toilet Wanita">Depan Toilet Wanita</option>
-                            <option value="Ruang Pengolahan Data">Ruang Pengolahan Data</option>
-                            <option value="Ruang Lemari Asam">Ruang Lemari Asam</option>
-                            <option value="Ruang Pengeringan">Ruang Pengeringan</option>
-                            <option value="Depang R. Bahan Kimia">Depang R. Bahan Kimia</option>
-                            <option value="Ruang Spechtro">Ruang Spechtro</option>
-                            <option value="Ruang AAS">Ruang AAS</option>
-            
+                        <label for="lokasi">Lokasi Penempatan</label>
+                        <select wire:model="lokasi" class="form-control" id="lokasi">
+                            <option disabled selected value>-- Pilih Lokasi --</option>
+                            @foreach(explode(',', $lokasiOptions) as $option)
+                                <option value="{{ $option }}">{{ $option }}</option>
+                            @endforeach
                         </select>
                         @error('lokasi') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
@@ -218,7 +168,7 @@
 </div>
  
  
-<!-- Delete Student Modal -->
+<!-- Delete Modal -->
 <div wire:ignore.self class="modal fade" id="deleteAparModal" tabindex="-1" aria-labelledby="deleteAparModalLabel"
     aria-hidden="true">
     <div class="modal-dialog">

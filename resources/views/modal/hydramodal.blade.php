@@ -16,14 +16,12 @@
                         @error('nama') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="mb-3">
-                        <label>Lokasi Hydrant</label>
-                        <select wire:model="lokasi" class="form-control">
-                        <option value=" "> </option>
-                            <option value="Parkiran Mobil Lt.1">Parkiran Mobil Lt.1</option>
-                            <option value="Ruang Pertemuan Lt. 2">Ruang Pertemuan Lt. 2</option>
-                            <option value="Depan Ruang Staff Pelatihan dan TU">Depan Ruang Staff Pelatihan dan TU</option>
-                            <option value="Depan Toilet Wanita Lt.3">Depan Toilet Wanita Lt.3</option>
-                            <option value="Samping Lift Barang Lt.3">Samping Lift Barang Lt.3</option>
+                        <label for="lokasi">Lokasi Penempatan hydrant</label>
+                        <select wire:model="lokasi" class="form-control" id="lokasi">
+                            <option value="">-- Pilih Lokasi --</option>
+                            @foreach(explode(',', $lokasiOptions) as $option)
+                                <option value="{{ $option }}">{{ $option }}</option>
+                            @endforeach
                         </select>
                         @error('lokasi') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
@@ -122,7 +120,7 @@
     </div>
 </div>
  
-<!-- Update Student Modal -->
+<!-- Update Modal -->
 <div wire:ignore.self class="modal fade" id="updateHydraModal" tabindex="-1" aria-labelledby="updateHydraModalLabel"
     aria-hidden="true">
     <div class="modal-dialog">
@@ -140,14 +138,12 @@
                         @error('nama') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="mb-3">
-                        <label>Lokasi Hydrant</label>
-                        <select wire:model="lokasi" class="form-control">
-                        <option value=" "> </option>
-                            <option value="Parkiran Mobil Lt.1">Parkiran Mobil Lt.1</option>
-                            <option value="Ruang Pertemuan Lt. 2">Ruang Pertemuan Lt. 2</option>
-                            <option value="Depan Ruang Staff Pelatihan dan TU">Depan Ruang Staff Pelatihan dan TU</option>
-                            <option value="Depan Toilet Wanita Lt.3">Depan Toilet Wanita Lt.3</option>
-                            <option value="Samping Lift Barang Lt.3">Samping Lift Barang Lt.3</option>
+                        <label for="lokasi">Lokasi Penempatan hydrant</label>
+                        <select wire:model="lokasi" class="form-control" id="lokasi">
+                            <option value="">-- Pilih Lokasi --</option>
+                            @foreach(explode(',', $lokasiOptions) as $option)
+                                <option value="{{ $option }}">{{ $option }}</option>
+                            @endforeach
                         </select>
                         @error('lokasi') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
@@ -247,7 +243,7 @@
 </div>
  
  
-<!-- Delete Student Modal -->
+<!-- Delete  Modal -->
 <div wire:ignore.self class="modal fade" id="deleteHydraModal" tabindex="-1" aria-labelledby="deleteHydraModalLabel"
     aria-hidden="true">
     <div class="modal-dialog">
