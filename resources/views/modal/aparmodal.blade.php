@@ -28,7 +28,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="lokasi">Lokasi Penempatan</label>
-                        <select wire:model="lokasi" class="form-control" id="lokasi">
+                        <select wire:model="lokasi" class="form-control select2" id="lokasi">
                             <option value="">-- Pilih Lokasi --</option>
                             @foreach(explode(',', $lokasiOptions) as $option)
                                 <option value="{{ $option }}">{{ $option }}</option>
@@ -113,7 +113,7 @@
                     <div class="mb-3">
                         <label for="lokasi">Lokasi Penempatan</label>
                         <select wire:model="lokasi" class="form-control" id="lokasi">
-                            <option disabled selected value>-- Pilih Lokasi --</option>
+                            <option value="">-- Pilih Lokasi --</option>
                             @foreach(explode(',', $lokasiOptions) as $option)
                                 <option value="{{ $option }}">{{ $option }}</option>
                             @endforeach
