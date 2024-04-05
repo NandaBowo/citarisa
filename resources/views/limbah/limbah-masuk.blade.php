@@ -44,7 +44,11 @@
                             <td>
                                 <div class="btn-group">
                                     <a href="/limbah_masuk" class="btn btn-sm btn-warning me-2" data-bs-toggle="modal" data-bs-target="#updateModal{{ $lb->id }}">Ubah</a>
-                                    <a href="/limbah_masuk/delete/{{ $lb->id }}" class="btn btn-sm btn-danger ms-2">Hapus</a>
+                                    <form action="/limbah_masuk/delete/{{ $lb->id }}" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')" type="submit" class="btn btn-sm btn-danger ms-2">Hapus</button>
+                                    </form>
                                 </div>
                             </td>
                         </tr>

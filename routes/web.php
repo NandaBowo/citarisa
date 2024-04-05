@@ -48,6 +48,7 @@ Route::middleware('auth:sadmin,user')->group(function () {
         return redirect('/limbah_masuk');
     });
     Route::put('/limbah_masuk/edit/{id}', [LimbahController::class, 'limbahMasukUpdate']);
+    Route::delete('/limbah_masuk/delete/{id}', [LimbahController::class, 'limbahMasukDelete']);
 
     // Route Limbah Keluar
     Route::get('/limbah_keluar', [LimbahController::class, 'limbahKeluar'])->name('limbah_keluar');

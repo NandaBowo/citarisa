@@ -99,12 +99,12 @@ class LimbahController extends Controller
         $daysToAdd = intval($request->durasi_exp_limbah);
         $newDate = date("Y-m-d", strtotime("+{$daysToAdd} days", strtotime($date)));
 
-        $limbah_masuk = LimbahMasuk::where('id', $id)->first();
-        $jumlah_limbah = JumlahLimbah::where('jenis_limbah_id', $request->jenis_limbah_id)->first();
+        $limbah_awal = LimbahMasuk::where('id', $id)->first();
+        $jumlah_limbah_awal = JumlahLimbah::where('jenis_limbah_id', $limbah_awal->jenis_limbah_id)->first();
 
-        $limbah = $jumlah_limbah->jumlah_limbah - $limbah_masuk->jumlah_limbah;
+        $substract = $jumlah_limbah_awal->jumlah_limbah - $limbah_awal->jumlah_limbah;
 
-        JumlahLimbah::updateOrInsert(["jenis_limbah_id" => $request->jenis_limbah_id], ["jumlah_limbah" => $limbah]);
+        JumlahLimbah::where('jenis_limbah_id', $limbah_awal->jenis_limbah_id)->update(['jumlah_limbah' => $substract]);
 
         LimbahMasuk::where('id', $id)->update([
             "jenis_limbah_id" => $request->jenis_limbah_id,
@@ -133,6 +133,26 @@ class LimbahController extends Controller
         }
 
         return redirect('/limbah_masuk')->with('status', "Data limbah berhasil diupdate!");
+    }
+
+    function limbahMasukDelete($id) : RedirectResponse
+    {
+        $limbah_awal = LimbahMasuk::where('id', $id)->first();
+        $jumlah_limbah_awal = JumlahLimbah::where('jenis_limbah_id', $limbah_awal->jenis_limbah_id)->first();
+
+        $substract = $jumlah_limbah_awal->jumlah_limbah - $limbah_awal->jumlah_limbah;
+
+        if ($substract < 0) {
+            return redirect('/limbah_masuk')->with('status', "Tidak dapat menghapus, karena jumlah limbah tidak sesuai!");
+        } else {
+            JumlahLimbah::where('jenis_limbah_id', $limbah_awal->jenis_limbah_id)->update(['jumlah_limbah' => $substract]);
+
+            MasterLimbah::where('id', $limbah_awal->jenis_limbah_id)->decrement('kuantitas', 1);
+
+            LimbahMasuk::where('id', $id)->delete();
+
+            return redirect('/limbah_masuk')->with('status', "Data limbah berhasil dihapus!");
+        }
     }
 
     function limbahKeluar() {
