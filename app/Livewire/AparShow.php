@@ -41,7 +41,7 @@ class AparShow extends Component
     public function saveApar()
     {
         $validatedData = $this->validate();
-
+        
         Apar::create($validatedData);
         session()->flash('message','Apar Added Successfully');
         $this->resetInput();
@@ -121,11 +121,14 @@ class AparShow extends Component
        
     $masterLimbah = MasterLimbah::where('kategori', 'Lokasi')->pluck('data');
     $this->lokasiOptions = $masterLimbah->implode(',');
+    
     }
 
     public function render()
     {
+
         $apar = Apar::where('merek', 'like', '%' . $this->search . '%')->orderBy('id', 'DESC')->paginate(3);
+      
         return view('livewire.apar-show', ['apar' => $apar]);
     }
 }
