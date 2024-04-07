@@ -43,8 +43,12 @@
                             <td>{{ $lk->bukti_nomor_dokumen }}</td>
                             <td>
                                 <div class="btn-group">
-                                    <a href="/limbah_keluar" class="btn btn-sm btn-warning me-2">Ubah</a>
-                                    <a href="/limbah_keluar" class="btn btn-sm btn-danger ms-2">Hapus</a>
+                                    <a href="/limbah_keluar" class="btn btn-sm btn-warning me-2" data-bs-toggle="modal" data-bs-target="#updateModal{{ $lk->id }}">Ubah</a>
+                                    <form action="/limbah_keluar/delete/{{ $lk->id }}" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')" type="submit" class="btn btn-sm btn-danger ms-2">Hapus</button>
+                                    </form>
                                 </div>
                             </td>
                         </tr>
@@ -54,7 +58,7 @@
         </div>
     </div>
 
-    <!-- Modal -->
+    <!-- Modal Add -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -99,5 +103,54 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal Edit -->
+    @foreach ($limbah_keluar as $lk)
+        <div class="modal fade" id="updateModal{{ $lk->id }}" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="updateModalLabel">Form Tambah Data Baru</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action="/limbah_keluar/edit/{{ $lk->id }}" method="post">
+                        @csrf
+                        @method('put')
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="jenis_limbah_id" class="form-label">Jenis Limbah B3 Masuk</label>
+                                <select class="form-select" id="jenis_limbah_id" name="jenis_limbah_id" required>
+                                    <option disabled selected value>Pilih Jenis Limbah</option>
+                                    @foreach ($master_limbah as $ml)
+                                        <option value="{{ $ml->id }}">{{ $ml->data }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="tanggal_keluar_limbah" class="form-label">Tanggal Keluar Limbah B3</label>
+                                <input type="date" class="form-control" id="tanggal_keluar_limbah" name="tanggal_keluar_limbah" value="{{ $lk->tanggal_keluar_limbah }}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="jumlah_limbah" class="form-label">Jumlah Limbah B3 Keluar (KG)</label>
+                                <input type="number" step="0.01" class="form-control" id="jumlah_limbah" name="jumlah_limbah" value="{{ $lk->jumlah_limbah_keluar }}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="tujuan_penyerahan" class="form-label">Tujuan Penyerahan</label>
+                                <input type="text" class="form-control" id="tujuan_penyerahan" name="tujuan_penyerahan" value="{{ $lk->tujuan_penyerahan }}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="bukti_nomor_dokumen" class="form-label">Bukti Nomor Dokumen</label>
+                                <input type="text" class="form-control" id="bukti_nomor_dokumen" name="bukti_nomor_dokumen" value="{{ $lk->bukti_nomor_dokumen }}" required>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Simpan Data</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    @endforeach
  
 @endsection

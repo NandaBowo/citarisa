@@ -48,11 +48,22 @@ Route::middleware('auth:sadmin,user')->group(function () {
         return redirect('/limbah_masuk');
     });
     Route::put('/limbah_masuk/edit/{id}', [LimbahController::class, 'limbahMasukUpdate']);
+    Route::get('/limbah_masuk/delete/{id}', function () {
+        return redirect('/limbah_masuk');
+    });
     Route::delete('/limbah_masuk/delete/{id}', [LimbahController::class, 'limbahMasukDelete']);
 
     // Route Limbah Keluar
     Route::get('/limbah_keluar', [LimbahController::class, 'limbahKeluar'])->name('limbah_keluar');
     Route::post('/limbah_keluar', [LimbahController::class, 'limbahKeluarAdd']);
+    Route::get('/limbah_keluar/edit/{id}', function () {
+        return redirect('/limbah_keluar');
+    });
+    Route::put('/limbah_keluar/edit/{id}', [LimbahController::class, 'limbahKeluarUpdate']);
+    Route::get('/limbah_keluar/delete/{id}', function () {
+        return redirect('/limbah_keluar');
+    });
+    Route::delete('/limbah_keluar/delete/{id}', [LimbahController::class, 'limbahKeluarDelete']);
 
     // Route Jumlah Limbah
     Route::get('/jumlah_limbah', [LimbahController::class, 'jumlahLimbah'])->name('jumlah_limbah');

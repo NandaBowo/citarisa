@@ -106,6 +106,8 @@ class LimbahController extends Controller
 
         JumlahLimbah::where('jenis_limbah_id', $limbah_awal->jenis_limbah_id)->update(['jumlah_limbah' => $substract]);
 
+        MasterLimbah::where('id', $limbah_awal->jenis_limbah_id)->decrement('kuantitas', 1);
+
         LimbahMasuk::where('id', $id)->update([
             "jenis_limbah_id" => $request->jenis_limbah_id,
             "sumber_limbah" => $request->sumber_limbah,
@@ -156,7 +158,7 @@ class LimbahController extends Controller
     }
 
     function limbahKeluar() {
-        $limbah_keluar = LimbahKeluar::join('master_limbahs', 'limbah_keluars.jenis_limbah_id', '=', 'master_limbahs.id')->get();
+        $limbah_keluar = LimbahKeluar::join('master_limbahs', 'limbah_keluars.jenis_limbah_id', '=', 'master_limbahs.id')->select("limbah_keluars.*", "master_limbahs.data")->get();
         $master_limbah = MasterLimbah::where('kategori', 'Limbah')->get();
 
         return view("limbah.limbah-keluar", compact("limbah_keluar", "master_limbah"));
@@ -197,6 +199,48 @@ class LimbahController extends Controller
         }
 
         return redirect('/limbah_keluar')->with('status', "Data limbah berhasil ditambahkan!");
+    }
+
+    public function limbahKeluarUpdate(Request $request, $id) : RedirectResponse
+    {
+        $get_jumlah_limbah = JumlahLimbah::where('jenis_limbah_id', $request->jenis_limbah_id)->first();
+
+        $limbah_keluar = LimbahKeluar::where('id', $id)->first();
+
+        if ($get_jumlah_limbah == null || $get_jumlah_limbah->jumlah_limbah < $request->jumlah_limbah) {
+            return redirect('/limbah_keluar')->with('status', "Jumlah limbah tidak mencukupi!");
+        } else {
+            JumlahLimbah::where('jenis_limbah_id', $limbah_keluar->jenis_limbah_id)->update(['jumlah_limbah' => $get_jumlah_limbah->jumlah_limbah + $limbah_keluar->jumlah_limbah_keluar]);
+
+            LimbahKeluar::where('id', $id)->update([
+                "jenis_limbah_id" => $request->jenis_limbah_id,
+                "tanggal_keluar_limbah" => $request->tanggal_keluar_limbah,
+                "jumlah_limbah_keluar" => $request->jumlah_limbah,
+                "tujuan_penyerahan" => $request->tujuan_penyerahan,
+                "bukti_nomor_dokumen" => $request->bukti_nomor_dokumen,
+            ]);
+
+            $get_jumlah_limbah_current = JumlahLimbah::where('jenis_limbah_id', $request->jenis_limbah_id)->first();
+
+            JumlahLimbah::where('jenis_limbah_id', $request->jenis_limbah_id)->update(["jumlah_limbah" => $get_jumlah_limbah_current->jumlah_limbah - $request->jumlah_limbah]);
+
+            return redirect('/limbah_keluar')->with('status', "Data limbah berhasil diupdate!");
+        }
+    }
+
+    public function limbahKeluarDelete($id) : RedirectResponse
+    {
+        $get_jumlah_limbah_keluar = LimbahKeluar::where('id', $id)->first();
+
+        $get_jumlah_limbah = JumlahLimbah::where('jenis_limbah_id', $get_jumlah_limbah_keluar->jenis_limbah_id)->first();
+
+        JumlahLimbah::where('jenis_limbah_id', $get_jumlah_limbah_keluar->jenis_limbah_id)->update([
+            "jumlah_limbah" => $get_jumlah_limbah->jumlah_limbah + $get_jumlah_limbah_keluar->jumlah_limbah_keluar
+        ]);
+
+        LimbahKeluar::where('id', $id)->delete();
+
+        return redirect('/limbah_keluar')->with('status', "Data limbah berhasil dihapus!");
     }
 
     function jumlahLimbah() {
