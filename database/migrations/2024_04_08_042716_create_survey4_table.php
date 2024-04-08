@@ -13,26 +13,26 @@ return new class extends Migration
     {
         Schema::create('survey4', function (Blueprint $table) {
             $table->id();
-            $table->string('survei61');
-            $table->string('survei62');
-            $table->string('survei63');
-            $table->string('survei64');
-            $table->string('survei65');
-            $table->string('survei66');
-            $table->string('survei67');
-            $table->string('survei68');
-            $table->string('survei69');
-            $table->string('survei70');
-            $table->string('survei71');
-            $table->string('survei72');
-            $table->string('survei73');
-            $table->string('survei74');
-            $table->string('survei75');
-            $table->string('survei76');
-            $table->string('survei77');
-            $table->string('survei78');
-            $table->string('survei79');
-            $table->string('survei80');
+            $table->string('survei61')->nullable();
+            $table->string('survei62')->nullable();
+            $table->string('survei63')->nullable();
+            $table->string('survei64')->nullable();
+            $table->string('survei65')->nullable();
+            $table->string('survei66')->nullable();
+            $table->string('survei67')->nullable();
+            $table->string('survei68')->nullable();
+            $table->string('survei69')->nullable();
+            $table->string('survei70')->nullable();
+            $table->string('survei71')->nullable();
+            $table->string('survei72')->nullable();
+            $table->string('survei73')->nullable();
+            $table->string('survei74')->nullable();
+            $table->string('survei75')->nullable();
+            $table->string('survei76')->nullable();
+            $table->string('survei77')->nullable();
+            $table->string('survei78')->nullable();
+            $table->string('survei79')->nullable();
+            $table->string('survei80')->nullable();
             $table->timestamps();
         });
     }

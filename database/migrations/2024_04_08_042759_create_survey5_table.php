@@ -13,17 +13,17 @@ return new class extends Migration
     {
         Schema::create('survey5', function (Blueprint $table) {
             $table->id();
-            $table->string('survei81');
-            $table->string('survei82');
-            $table->string('survei83');
-            $table->string('survei84');
-            $table->string('survei85');
-            $table->string('survei86');
-            $table->string('survei87');
-            $table->string('survei88');
-            $table->string('survei89');
-            $table->string('survei90');
-            $table->string('survei91');
+            $table->string('survei81')->nullable();
+            $table->string('survei82')->nullable();
+            $table->string('survei83')->nullable();
+            $table->string('survei84')->nullable();
+            $table->string('survei85')->nullable();
+            $table->string('survei86')->nullable();
+            $table->string('survei87')->nullable();
+            $table->string('survei88')->nullable();
+            $table->string('survei89')->nullable();
+            $table->string('survei90')->nullable();
+            $table->string('survei91')->nullable();
             $table->timestamps();
         });
     }

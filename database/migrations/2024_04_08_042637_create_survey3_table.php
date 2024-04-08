@@ -23,16 +23,16 @@ return new class extends Migration
             $table->string('survei48');
             $table->string('survei49');
             $table->string('survei50');
-            $table->string('survei51');
-            $table->string('survei52');
-            $table->string('survei53');
-            $table->string('survei54');
-            $table->string('survei55');
-            $table->string('survei56');
-            $table->string('survei57');
-            $table->string('survei58');
-            $table->string('survei59');
-            $table->string('survei60');
+            $table->string('survei51')->nullable();
+            $table->string('survei52')->nullable();
+            $table->string('survei53')->nullable();
+            $table->string('survei54')->nullable();
+            $table->string('survei55')->nullable();
+            $table->string('survei56')->nullable();
+            $table->string('survei57')->nullable();
+            $table->string('survei58')->nullable();
+            $table->string('survei59')->nullable();
+            $table->string('survei60')->nullable();
             $table->timestamps();
         });
     }
