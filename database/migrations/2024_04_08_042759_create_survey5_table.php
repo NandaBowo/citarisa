@@ -24,7 +24,6 @@ return new class extends Migration
             $table->string('survei89');
             $table->string('survei90');
             $table->string('survei91');
-        
             $table->timestamps();
         });
     }
