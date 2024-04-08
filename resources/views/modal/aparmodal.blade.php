@@ -1,4 +1,5 @@
 <!-- Insert Modal -->
+
 <div wire:ignore.self class="modal fade" id="aparModal" tabindex="-1" aria-labelledby="aparModalLabel"
     aria-hidden="true">
     <div class="modal-dialog">
@@ -28,10 +29,10 @@
                     </div>
                     <div class="mb-3">
                         <label for="lokasi">Lokasi Penempatan</label>
-                        <select wire:model="lokasi" class="form-control select2" id="lokasi">
+                        <select wire:model="lokasi" class="form-control" id="lokasi">
                             <option value="">-- Pilih Lokasi --</option>
                             @foreach(explode(',', $lokasiOptions) as $option)
-                                <option value="{{ $option }}">{{ $option }}</option>
+                                <option value="{{ trim($option) }}">{{ trim($option) }}</option>
                             @endforeach
                         </select>
                         @error('lokasi') <span class="text-danger">{{ $message }}</span> @enderror
@@ -112,7 +113,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="lokasi">Lokasi Penempatan</label>
-                        <select wire:model="lokasi" class="form-control" id="lokasi">
+                        <select wire:model="lokasi" class="form-select " id="lokasi">
                             <option value="">-- Pilih Lokasi --</option>
                             @foreach(explode(',', $lokasiOptions) as $option)
                                 <option value="{{ $option }}">{{ $option }}</option>
@@ -191,3 +192,5 @@
         </div>
     </div>
 </div>
+
+

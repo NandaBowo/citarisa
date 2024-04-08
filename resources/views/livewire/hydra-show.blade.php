@@ -30,7 +30,7 @@
             </div>
             <div class="card-body">
                 <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#hydraModal">Tambah Data</button> 
-                <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="">Export Data</button> 
+                <a href="hydra/export" class="btn btn-primary btn-lg">Export Data</a>
                 <table class="table table-striped" id="table1">
                     <thead>
                         <tr>

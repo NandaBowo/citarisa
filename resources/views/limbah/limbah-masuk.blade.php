@@ -12,7 +12,7 @@
             <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Tambah Data Baru
             </button>
-            <a href="/limbah_keluar" class="btn btn-success ms-2">Export Data Excel</a>
+            <a href="/limbah_masuk/export" class="btn btn-success ms-2">Export Data Excel</a>
         </div>
         @session('status')
             <div class="mx-4 mt-4 mb-3">

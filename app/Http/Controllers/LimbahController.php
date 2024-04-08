@@ -11,6 +11,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Throwable;
 
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\LimbahMasuksExport;
+use App\Exports\JumlahLimbahsExport;
+use App\Exports\LimbahKeluarsExport;
+
 class LimbahController extends Controller
 {
     function masterLimbah() {
@@ -247,5 +252,18 @@ class LimbahController extends Controller
         $jumlah_limbah = JumlahLimbah::join('master_limbahs', 'master_limbahs.id', '=', 'jumlah_limbahs.jenis_limbah_id')->get();
 
         return view("limbah.jumlah-limbah", compact("jumlah_limbah"));
+    }
+
+    public function exportMasuk()
+    {
+        return Excel::download(new LimbahMasuksExport, 'limbah_masuk.xlsx');
+    }
+    public function exportJumlah()
+    {
+        return Excel::download(new JumlahLimbahsExport, 'jumlah_limbah.xlsx');
+    }
+    public function exportKeluar()
+    {
+        return Excel::download(new LimbahKeluarsExport, 'keluar_limbah.xlsx');
     }
 }

@@ -9,7 +9,7 @@
             <h4 class="text-center">JUMLAH LIMBAH B 3 DI TPS</h4>
         </div>
         <div class="mx-4 mb-3">
-            <a href="/limbah_keluar" class="btn btn-success ms-2">Export Data Excel</a>
+            <a href="limbah_jumlah/export" class="btn btn-success ms-2">Export Data Excel</a>
         </div>
         <div class="card-body">
             <table class="table table-hover">

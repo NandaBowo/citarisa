@@ -31,6 +31,9 @@ Route::middleware('auth:sadmin,user')->group(function () {
     Route::get('/user', [App\Http\Controllers\UserController::class, 'index'])->name('user');
     Route::get('/hydra', [HydraController::class, 'index'])->name('hydra');
 
+    Route::get('/detector/export', [App\Http\Controllers\DetectorController::class, 'export']);
+    Route::get('/hydra/export', [HydraController::class, 'export']);
+    Route::get('/apar/export', [App\Http\Controllers\AparController::class, 'export']);
     // Route Master
     Route::get('/master_limbah', [LimbahController::class, 'masterLimbah']);
     Route::post('/master_limbah', [LimbahController::class, 'masterLimbahAdd']);
@@ -66,6 +69,10 @@ Route::middleware('auth:sadmin,user')->group(function () {
 
     // Route Jumlah Limbah
     Route::get('/jumlah_limbah', [LimbahController::class, 'jumlahLimbah'])->name('jumlah_limbah');
+
+    Route::get('/limbah_masuk/export', [LimbahController::class, 'exportMasuk']);
+    Route::get('/limbah_jumlah/export', [LimbahController::class, 'exportJumlah']);
+    Route::get('/limbah_keluar/export', [LimbahController::class, 'exportKeluar']);
 });
 
 

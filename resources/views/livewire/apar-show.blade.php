@@ -1,20 +1,13 @@
 <div class="page-heading">
-
+    
     @include('modal.aparmodal')
     <div class="page-title">
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
                 <h3>Data Apar</h3>
-                <!-- <p class="text-subtitle text-muted">A sortable, searchable, paginated table without dependencies thanks to simple-datatables.</p> -->
+               
             </div>
-            <!-- <div class="col-12 col-md-6 order-md-2 order-first">
-                <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">DataTable</li>
-                    </ol>
-                </nav>
-            </div> -->
+          
             <br>
             @if (session()->has('message'))
                 <h5 class="alert alert-success">{{ session('message') }}</h5>
@@ -30,7 +23,8 @@
             </div>
             <div class="card-body">
                 <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#aparModal">Tambah Data</button> 
-                <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="">Export Data</button> 
+                <a href="apar/export" class="btn btn-primary btn-lg">Export Data</a>
+
                 <table class="table table-striped" id="table1">
                     <thead>
                         <tr>

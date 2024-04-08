@@ -6,9 +6,9 @@
 
 @section('content')
  
-    <div>
+
     <livewire:apar-show>
-    </div>
+  
  
 @endsection
  
@@ -27,3 +27,4 @@
 
 
 @endsection
+
