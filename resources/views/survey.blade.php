@@ -32,6 +32,11 @@
 
     <div class="row justify-content-center">
         <div class="col-md-8">
+            @session('status')
+                <div class="mx-4 mt-4 mb-3">
+                    <p class="fw-bold text-light bg-success w-25 text-center rounded">{{ session('status') }}</p>
+                </div>
+            @endsession
             <form action="/" method="POST">
                 @csrf
                 <div class="card mb-3">

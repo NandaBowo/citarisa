@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('survei47');
             $table->string('survei48');
             $table->string('survei49');
-            $table->string('survei50');
+            $table->string('survei50')->nullable();
             $table->string('survei51')->nullable();
             $table->string('survei52')->nullable();
             $table->string('survei53')->nullable();
