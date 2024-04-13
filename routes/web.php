@@ -19,6 +19,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::post('/', [HomeController::class, 'survey']);
+Route::get('/survey', [HomeController::class, 'dataSurvey']);
+Route::get('/survey/delete/{id}', function () {
+    return redirect('/survey');
+});
+Route::delete('/survey/delete/{id}', [HomeController::class, 'deleteSurvey']);
 
 Route::get('/login', [AuthController::class, 'getLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'postLogin']);

@@ -146,4 +146,25 @@ class HomeController extends Controller
 
         return redirect('/')->with('status', 'Terima kasih telah mengisi survey!');
     }
+
+    function dataSurvey() {
+        $survei1 = DB::table('survey')->get();
+        $survei2 = DB::table('survey2')->get();
+        $survei3 = DB::table('survey3')->get();
+        $survei4 = DB::table('survey4')->get();
+        $survei5 = DB::table('survey5')->get();
+
+        return view('data-survey', compact('survei1', 'survei2', 'survei3', 'survei4', 'survei5'));
+    }
+
+    function deleteSurvey($id) : RedirectResponse
+    {
+        DB::table('survey')->where('id', $id)->delete();
+        DB::table('survey2')->where('id', $id)->delete();
+        DB::table('survey3')->where('id', $id)->delete();
+        DB::table('survey4')->where('id', $id)->delete();
+        DB::table('survey5')->where('id', $id)->delete();
+        
+        return redirect('/survey')->with('status', 'Data Survey Berhasil di Hapus!');
+    }
 }

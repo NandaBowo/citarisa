@@ -18,7 +18,7 @@ class AparsExport implements FromQuery, WithHeadings
             'merek',
             'jenis',
             'lokasi',
-            'ID',
+            'id',
             'tanggalpengecekan',
             'berat',
             'segel',

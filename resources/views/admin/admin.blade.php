@@ -75,7 +75,7 @@
 
                         <li
                             class="sidebar-item  ">
-                            <a href="index.html" class='sidebar-link'>
+                            <a href="/survey" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Data Survey</span>
                             </a>
@@ -141,7 +141,7 @@
 
                     <li
                             class="sidebar-item  ">
-                            <a href="index.html" class='sidebar-link'>
+                            <a href="/survey" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Data Survey</span>
                             </a>
