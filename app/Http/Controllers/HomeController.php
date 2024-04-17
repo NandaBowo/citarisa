@@ -9,16 +9,6 @@ use Illuminate\Support\Facades\DB;
 class HomeController extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest');
-    }
-
-    /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
@@ -32,6 +22,7 @@ class HomeController extends Controller
     {
         DB::table('survey')->insert([
             'nama' => $request->nama,
+            'nama_pt' => $request->nama_pt,
             'tanggal' => $request->tanggal,
             'usia' => $request->usia,
             'jenis_kelamin' => $request->jenis_kelamin,
