@@ -41,6 +41,13 @@
                 @csrf
                 <div class="card mb-3">
                     <div class="card-body p-4">
+                        <h5 class="card-title mb-3">Nama PT <span class="text-danger">*</span></h5>
+                        <input type="text" class="form-control" id="nama_pt" name="nama_pt" placeholder="Masukkan Nama PT" required>
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="card-body p-4">
                         <h5 class="card-title mb-3">Nama <span class="text-danger">*</span></h5>
                         <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama" required>
                     </div>
@@ -1685,7 +1692,6 @@
                                 Tidak
                             </label>
                         </div>
-                        <input class="form-check-input" type="radio" name="survei50" id="survei503" value="" checked>
                     </div>
                 </div>
 
@@ -1712,7 +1718,6 @@
                                 Tidak
                             </label>
                         </div>
-                        <input class="form-check-input" type="radio" name="survei52" id="survei523" value="" checked>
                     </div>
                 </div>
 
@@ -1739,7 +1744,6 @@
                                 Tidak
                             </label>
                         </div>
-                        <input class="form-check-input" type="radio" name="survei54" id="survei543" value="" checked>
                     </div>
                 </div>
 
@@ -1766,7 +1770,6 @@
                                 Tidak
                             </label>
                         </div>
-                        <input class="form-check-input" type="radio" name="survei56" id="survei563" value="" checked>
                     </div>
                 </div>
 
@@ -1793,7 +1796,6 @@
                                 Tidak
                             </label>
                         </div>
-                        <input class="form-check-input" type="radio" name="survei58" id="survei583" value="" checked>
                     </div>
                 </div>
 
@@ -1821,7 +1823,6 @@
                             </label>
                         </div>
                     </div>
-                    <input class="form-check-input" type="radio" name="survei60" id="survei603" value="" checked>
                 </div>
 
                 <div class="card mb-3">
@@ -1848,7 +1849,6 @@
                             </label>
                         </div>
                     </div>
-                    <input class="form-check-input" type="radio" name="survei62" id="survei623" value="" checked>
                 </div>
 
                 <div class="card mb-3">
@@ -1875,7 +1875,6 @@
                             </label>
                         </div>
                     </div>
-                    <input class="form-check-input" type="radio" name="survei64" id="survei643" value="" checked>
                 </div>
 
                 <div class="card mb-3">
@@ -1902,7 +1901,6 @@
                             </label>
                         </div>
                     </div>
-                    <input class="form-check-input" type="radio" name="survei66" id="survei663" value="" checked>
                 </div>
 
                 <div class="card mb-3">
@@ -1929,7 +1927,6 @@
                             </label>
                         </div>
                     </div>
-                    <input class="form-check-input" type="radio" name="survei68" id="survei683" value="" checked>
                 </div>
 
                 <div class="card mb-3">
@@ -1956,7 +1953,6 @@
                             </label>
                         </div>
                     </div>
-                    <input class="form-check-input" type="radio" name="survei70" id="survei703" value="" checked>
                 </div>
 
                 <div class="card mb-3">
@@ -1983,7 +1979,6 @@
                             </label>
                         </div>
                     </div>
-                    <input class="form-check-input" type="radio" name="survei72" id="survei723" value="" checked>
                 </div>
 
                 <div class="card mb-3">
@@ -2010,7 +2005,6 @@
                             </label>
                         </div>
                     </div>
-                    <input class="form-check-input" type="radio" name="survei74" id="survei743" value="" checked>
                 </div>
 
                 <div class="card mb-3">
@@ -2037,7 +2031,6 @@
                             </label>
                         </div>
                     </div>
-                    <input class="form-check-input" type="radio" name="survei76" id="survei763" value="" checked>
                 </div>
 
                 <div class="card mb-3">
@@ -2064,7 +2057,6 @@
                             </label>
                         </div>
                     </div>
-                    <input class="form-check-input" type="radio" name="survei78" id="survei783" value="" checked>
                 </div>
 
                 <div class="card mb-3">
@@ -2091,7 +2083,6 @@
                             </label>
                         </div>
                     </div>
-                    <input class="form-check-input" type="radio" name="survei80" id="survei803" value="" checked>
                 </div>
 
                 <div class="card mb-3">
@@ -2118,7 +2109,6 @@
                             </label>
                         </div>
                     </div>
-                    <input class="form-check-input" type="radio" name="survei82" id="survei823" value="" checked>
                 </div>
 
                 <div class="card mb-3">
@@ -2145,7 +2135,6 @@
                             </label>
                         </div>
                     </div>
-                    <input class="form-check-input" type="radio" name="survei84" id="survei843" value="" checked>
                 </div>
 
                 <div class="card mb-3">
@@ -2172,7 +2161,6 @@
                             </label>
                         </div>
                     </div>
-                    <input class="form-check-input" type="radio" name="survei86" id="survei863" value="" checked>
                 </div>
 
                 <div class="card mb-3">
@@ -2199,7 +2187,6 @@
                             </label>
                         </div>
                     </div>
-                    <input class="form-check-input" type="radio" name="survei88" id="survei883" value="" checked>
                 </div>
 
                 <div class="card mb-3">
@@ -2226,7 +2213,6 @@
                             </label>
                         </div>
                     </div>
-                    <input class="form-check-input" type="radio" name="survei90" id="survei903" value="" checked>
                 </div>
 
                 <div class="card mb-3">

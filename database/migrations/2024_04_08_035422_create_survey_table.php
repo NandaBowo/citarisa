@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('survey', function (Blueprint $table) {
             $table->id();
+            $table->string('nama_pt');
             $table->string('nama');
             $table->date('tanggal');
             $table->string('usia');
