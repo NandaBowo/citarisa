@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Exports\SurveysExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class HomeController extends Controller
 {
@@ -157,5 +159,9 @@ class HomeController extends Controller
         DB::table('survey5')->where('id', $id)->delete();
         
         return redirect('/survey')->with('status', 'Data Survey Berhasil di Hapus!');
+    }
+    public function export()
+    {
+        return Excel::download(new SurveysExport, 'surveys.xlsx');
     }
 }
