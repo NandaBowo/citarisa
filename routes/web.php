@@ -35,7 +35,7 @@ Route::middleware('auth:sadmin,user')->group(function () {
     Route::get('/detector', [App\Http\Controllers\DetectorController::class, 'index'])->name('detector');
     Route::get('/user', [App\Http\Controllers\UserController::class, 'index'])->name('user');
     Route::get('/hydra', [HydraController::class, 'index'])->name('hydra');
-    Route::get('/survey', [App\Http\Controllers\SurveyController::class, 'index'])->name('survey');
+    // Route::get('/survey', [App\Http\Controllers\SurveyController::class, 'index'])->name('survey');
     Route::get('/detector/export', [App\Http\Controllers\DetectorController::class, 'export']);
     Route::get('/hydra/export', [HydraController::class, 'export']);
     Route::get('/apar/export', [App\Http\Controllers\AparController::class, 'export']);
