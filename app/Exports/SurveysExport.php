@@ -15,7 +15,7 @@ class SurveysExport implements FromQuery, WithHeadings
     {
         return DB::table('survey')
             ->select(
-                'survey.nama', 'survey.nama_pt', 'survey.tanggal', 'survey.usia', 'survey.jenis_kelamin',
+                'survey.nama_pt', 'survey.nama', 'survey.tanggal', 'survey.usia', 'survey.jenis_kelamin',
                 'survey.tinggi_badan', 'survey.berat_badan', 'survey.posisi', 'survey.lokasi_kerja',
                 'survey.survei1', 'survey.survei2', 'survey.survei3', 'survey.survei4', 'survey.survei5',
                 'survey.survei6', 'survey.survei7', 'survey.survei8', 'survey.survei9', 'survey.survei10',
@@ -49,27 +49,27 @@ class SurveysExport implements FromQuery, WithHeadings
     public function headings(): array
     {
         return [
-            'Nama', 'Nama PT', 'Tanggal', 'Usia', 'Jenis Kelamin',
-            'Tinggi Badan', 'Berat Badan', 'Posisi', 'Lokasi Kerja',
-            'Survei 1', 'Survei 2', 'Survei 3', 'Survei 4', 'Survei 5',
-            'Survei 6', 'Survei 7', 'Survei 8', 'Survei 9', 'Survei 10',
-            'Survei 11', 'Survei 12', 'Survei 13', 'Survei 14', 'Survei 15',
-            'Survei 16', 'Survei 17', 'Survei 18', 'Survei 19', 'Survei 20',
-            'Survei 21', 'Survei 22', 'Survei 23', 'Survei 24', 'Survei 25',
-            'Survei 26', 'Survei 27', 'Survei 28', 'Survei 29', 'Survei 30',
-            'Survei 31', 'Survei 32', 'Survei 33', 'Survei 34', 'Survei 35',
-            'Survei 36', 'Survei 37', 'Survei 38', 'Survei 39', 'Survei 40',
-            'Survei 41', 'Survei 42', 'Survei 43', 'Survei 44', 'Survei 45',
-            'Survei 46', 'Survei 47', 'Survei 48', 'Survei 49', 'Survei 50',
-            'Survei 51', 'Survei 52', 'Survei 53', 'Survei 54', 'Survei 55',
-            'Survei 56', 'Survei 57', 'Survei 58', 'Survei 59', 'Survei 60',
-            'Survei 61', 'Survei 62', 'Survei 63', 'Survei 64', 'Survei 65',
-            'Survei 66', 'Survei 67', 'Survei 68', 'Survei 69', 'Survei 70',
-            'Survei 71', 'Survei 72', 'Survei 73', 'Survei 74', 'Survei 75',
-            'Survei 76', 'Survei 77', 'Survei 78', 'Survei 79', 'Survei 80',
-            'Survei 81', 'Survei 82', 'Survei 83', 'Survei 84', 'Survei 85',
-            'Survei 86', 'Survei 87', 'Survei 88', 'Survei 89', 'Survei 90',
-            'Survei 91'
+            'Nama PT', 'Nama', 'Tanggal Hari Ini', 'Usia', 'Jenis Kelamin',
+            'Tinggi Badan', 'Berat Badan', 'Posisi/Jabatan', 'Lokasi Kerja',
+            'Deskripsikan tugas-tugas', 'Jam Istirahat', 'tangan dominan', 'lama bekerja', 
+            'kelelahan mental ','kelelahan fisik', 'Mengalami rasa sakit', 'Masalah leher', 'parah masalah leher', 'Masalah bahu kanan',
+            'Parah masalah bahu kanan', 'Masalah bahu kiri', 'Parah masalah bahu kiri', 'Masalah siku kanan', 'Parah masalah siku kanan',
+            'Masalah siku kiri', 'Parah masalah siku kiri', 'Masalah lengan kanan', 'Parah masalah lengan kanan', 'masalah lengan kiri',
+            'Parah masalah lengan kiri', 'Masalah tangan kanan', 'Parah masalah tangan kanan', 'Masalah tangan kiri', 'Parah masalah tangan kiri',
+            'Masalah punggung atas', 'Parah masalah punggung atas', 'Masalah punggung bawah', 'Parah masalah punggung bawah', 'Masalah pinggul kanan',
+            'Parah masalah pinggul kanan', 'Masalah pinggul kiri', 'Parah masalah pinggul kiri', 'Masalah paha kanan', 'Parah masalah paha kanan',
+            'Masalah paha kiri', 'Parah masalah paha kiri', 'Masalah lutut kanan', 'Parah masalah lutut kanan', 'Masalah lutut kiri',
+            'Parah masalah lutut kiri', 'Masalah betis kanan', 'Parah masalah betis kanan', 'Masalah betis kiri', 'Parah masalah betis kiri',
+            'Masalah kaki kanan', 'Parah masalah kaki kanan', 'Masalah kaki kiri', 'Parah masalah kaki kiri', 'Cedera leher',
+            'Penyebab masalah leher', 'Cedera bahu kanan', 'Penyebab masalah bahu kanan', 'Cedera bahu kiri', 'Penyebab masalah bahu kiri',
+            'Cedera siku kanan', 'Penyebab masalah siku kanan', 'Cedera siku kiri', 'Penyebab masalah siku kiri', 'Cedera lengan kanan',
+            'Penyebab masalah lengan kanan', 'Cedera lengan kiri', 'Penyebab masalah lengan kiri', 'Cedera tangan kanan', 'Penyebab masalah tangan kanan',
+            'Cedera tangan kiri', 'Penyebab masalah tangan kiri', 'Cedera punggung atas', 'Penyebab masalah punggung atas', 'Cedera punggung bawah',
+            'Penyebab masalah punggung bawah', 'Cedera pinggul kanan', 'Penyebab masalah pinggul kanan', 'Cedera pinggul kiri', 'Penyebab masalah pinggul kiri',
+            'Cedera paha kanan', 'Penyebab masalah paha kanan', 'Cedera paha kiri', 'Penyebab masalah paha kiri', 'Cedera lutut kiri',
+            'Penyebab masalah lutut kiri', 'Cedera lutut kanan', 'Penyebab masalah lutut kanan', 'Cedera betis kanan', 'Penyebab masalah betis kanan',
+            'Cedera betis kiri', 'Penyebab masalah betis kiri', 'Cedera kaki kanan', 'Penyebab masalah kaki kanan', 'Cedera kaki kiri',
+            'Penyebab masalah kaki kiri'
         ];
     }
 }
