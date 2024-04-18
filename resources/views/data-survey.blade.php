@@ -55,6 +55,10 @@
                 <table class="table">
                     <tbody>
                         @foreach ($survei1 as $s1)
+                        <tr>
+                            <th>Soal Survei</th>
+                            <th>Jawaban</th>
+                        </tr>
                             <tr>
                                 <td>Nama PT</td>
                                 <td>{{ $s1->nama_pt }}</td>
