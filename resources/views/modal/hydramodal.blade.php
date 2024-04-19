@@ -4,7 +4,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="hydraModalLabel">Create Hydra</h5>
+                <h5 class="modal-title" id="hydraModalLabel">Create Hydrant</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                     wire:click="closeModal"></button>
             </div>
@@ -126,7 +126,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="updateHydraModalLabel">Edit Hydra</h5>
+                <h5 class="modal-title" id="updateHydraModalLabel">Edit Hydrant</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" wire:click="closeModal"
                     aria-label="Close"></button>
             </div>
@@ -249,7 +249,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="deleteHydraModalLabel">Delete Hydra</h5>
+                <h5 class="modal-title" id="deleteHydraModalLabel">Delete Hydrant</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" wire:click="closeModal"
                     aria-label="Close"></button>
             </div>
