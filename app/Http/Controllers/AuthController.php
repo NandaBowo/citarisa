@@ -22,14 +22,14 @@ class AuthController extends Controller
         if (Auth::guard('sadmin')->attempt($credentials)) {
             $request->session()->regenerate();
     
-            return redirect()->intended('hydra');
+            return redirect()->intended('survey');
         }
     
         
         if (Auth::guard('user')->attempt($credentials)) {
             $request->session()->regenerate();
     
-            return redirect()->intended('apar');
+            return redirect()->intended('survey');
         }
     
         
