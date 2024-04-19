@@ -101,18 +101,20 @@
         <h5 style="text-align: center; color: red; margin-top: 16px;">{{ $message }}</h5>
     @enderror
     @csrf
-    <h1 class="h3 mb-3 fw-normal text-center mt-3 mb-4">Selamat Datang</h1>
+    <h1 class="h3 fw-normal text-center mt-3 mb-4">Selamat Datang</h1>
 
     <div class="form-floating">
       <input type="text" class="form-control" id="name" name="name" placeholder="Masukkan Username">
       <label for="name">Username</label>
     </div>
-    <div class="form-floating">
+    <div class="form-floating mb-3">
       <input type="password" class="form-control" id="password" name="password" placeholder="Password">
       <label for="password">Password</label>
     </div>
 
-    <button class="btn btn-primary w-100 py-2 mt-3" type="submit">Login</button>
+    <a href="/"><center>Kembali ke halaman utama</center></a>
+
+    <button class="btn btn-primary w-100 py-2 mt-4" type="submit">Login</button>
   </form>
 </main>
 <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
